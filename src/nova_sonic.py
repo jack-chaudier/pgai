@@ -109,13 +109,12 @@ class NovaSonicSession:
                 },
             }}})
 
-        # Start sending setup events first (they queue on the input stream),
-        # then await_output() which triggers the HTTP/2 request. This ordering
-        # matches the pattern that worked in testing — create_task for sends,
-        # then await the output.
-        setup_task = asyncio.create_task(_setup())
-        _, self._output_stream = await self._stream.await_output()
-        await setup_task
+        async def _get_output():
+            _, self._output_stream = await self._stream.await_output()
+
+        # gather is required: await_output() only resolves once enough events
+        # have been sent over the HTTP/2 stream. Both must run concurrently.
+        await asyncio.gather(_setup(), _get_output())
 
     async def send_audio(self, pcm_b64: str) -> None:
         """Send 16kHz PCM16 base64 audio chunk to Nova Sonic."""
