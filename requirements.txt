@@ -1,0 +1,19 @@
+# Telephony
+twilio>=9.0.0
+
+# Web server (Twilio webhook + WebSocket handler)
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+websockets>=13.0
+
+# AWS Bedrock — Nova Sonic bidirectional speech-to-speech
+aws-sdk-bedrock-runtime>=0.4.0
+
+# Google Gemini — post-call transcript analysis
+google-genai>=1.69.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Audio utilities
+numpy>=1.26.0

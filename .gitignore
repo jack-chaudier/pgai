@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing/runtime artifacts
+*.log
+*.wav
+*.mp3
+*.ogg
+
+# uv
+.python-version
+uv.lock
+
+# ngrok
+ngrok.yml
