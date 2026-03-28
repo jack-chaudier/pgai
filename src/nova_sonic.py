@@ -108,12 +108,21 @@ class NovaSonicSession:
                     "sampleSizeBits": 16, "channelCount": 1,
                 },
             }}})
+            # Send silence to keep data flowing — await_output() only resolves
+            # once the HTTP/2 response headers arrive, which needs sustained
+            # data on the wire.
+            silence_b64 = base64.b64encode(b"\x00" * 3200).decode("ascii")
+            for _ in range(20):
+                await self._send({"event": {"audioInput": {
+                    "promptName": self._prompt_name,
+                    "contentName": self._content_name,
+                    "content": silence_b64,
+                }}})
+                await asyncio.sleep(0.1)
 
         async def _get_output():
             _, self._output_stream = await self._stream.await_output()
 
-        # gather is required: await_output() only resolves once enough events
-        # have been sent over the HTTP/2 stream. Both must run concurrently.
         await asyncio.gather(_setup(), _get_output())
 
     async def send_audio(self, pcm_b64: str) -> None:
