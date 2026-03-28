@@ -54,5 +54,5 @@ async def twilio_websocket(websocket: WebSocket):
             log.info("Transcript (%d entries):", len(transcript))
             for entry in transcript:
                 log.info("  [%s] %s", entry["role"], entry["content"][:100])
-    except Exception:
-        log.exception("Bridge error")
+    except Exception as e:
+        log.exception("Bridge error: %s", e)
