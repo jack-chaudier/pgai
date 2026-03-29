@@ -23,10 +23,13 @@ SAMPLE_RATE = 8000  # recording sample rate
 
 
 class TwilioNovaBridge:
-    def __init__(self, twilio: TwilioStream, system_prompt: str, voice_id: str = "tiffany"):
+    def __init__(self, twilio: TwilioStream, system_prompt: str, voice_id: str = "tiffany",
+                 scenario_id: str = "default", scenario_name: str = ""):
         self.twilio = twilio
         self.nova = NovaSonicSession(system_prompt=system_prompt, voice_id=voice_id)
         self.transcript: list[dict] = []
+        self.scenario_id = scenario_id
+        self.scenario_name = scenario_name
         self._recent_texts: set[str] = set()
         # Audio timeline: list of (timestamp, direction, mulaw_bytes)
         self._audio_timeline: list[tuple[float, str, bytes]] = []
@@ -96,7 +99,9 @@ class TwilioNovaBridge:
                 text = " ".join(event.data.split()).strip()
                 if not text or text.startswith("{"):
                     continue
-                role = event.role or ""
+                # Map Nova roles to readable names
+                nova_role = event.role or ""
+                role = "AGENT" if nova_role == "USER" else "PATIENT"
                 if text in self._recent_texts:
                     continue
                 self._recent_texts.add(text)
@@ -127,18 +132,39 @@ class TwilioNovaBridge:
                 asyncio.create_task(self.twilio.ws.close())
 
     def _save_call(self):
-        """Save transcript JSON and combined stereo WAV."""
+        """Save transcript JSON, readable text, and combined stereo WAV."""
         if not self.transcript:
             return
 
+        call_duration = time.monotonic() - self._call_start if self._call_start else 0
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
+        prefix = f"transcripts/{self.scenario_id}-{ts}"
         os.makedirs("transcripts", exist_ok=True)
 
-        # Save transcript
-        transcript_path = f"transcripts/call-{ts}.json"
-        with open(transcript_path, "w") as f:
-            json.dump(self.transcript, f, indent=2)
-        log.info("Transcript saved to %s", transcript_path)
+        # Save transcript JSON with metadata
+        output = {
+            "scenario_id": self.scenario_id,
+            "scenario_name": self.scenario_name,
+            "timestamp": datetime.now().isoformat(),
+            "duration_seconds": round(call_duration, 1),
+            "transcript": self.transcript,
+        }
+        json_path = f"{prefix}.json"
+        with open(json_path, "w") as f:
+            json.dump(output, f, indent=2)
+        log.info("Transcript saved to %s", json_path)
+
+        # Save readable text version
+        txt_path = f"{prefix}.txt"
+        with open(txt_path, "w") as f:
+            f.write(f"Scenario: {self.scenario_name}\n")
+            f.write(f"Duration: {call_duration:.0f}s\n")
+            f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
+            f.write("=" * 60 + "\n\n")
+            for entry in self.transcript:
+                label = "Agent" if entry["role"] == "AGENT" else "Patient"
+                f.write(f"{label}: {entry['content']}\n\n")
+        log.info("Text transcript saved to %s", txt_path)
 
         if not self._audio_timeline:
             return
@@ -174,7 +200,7 @@ class TwilioNovaBridge:
 
         # Interleave stereo
         stereo = np.column_stack((left, right)).flatten()
-        wav_path = f"transcripts/call-{ts}.wav"
+        wav_path = f"{prefix}.wav"
         with wave.open(wav_path, "wb") as wf:
             wf.setnchannels(2)
             wf.setsampwidth(2)

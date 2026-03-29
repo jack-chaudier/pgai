@@ -77,14 +77,19 @@ async def twilio_websocket(websocket: WebSocket):
             goal=scenario.get("goal", ""),
         )
         scenario_id = scenario.get("id", "unknown")
+        scenario_name = scenario.get("name", "")
     else:
         prompt = PROMPT_TEMPLATE.format(
             persona="Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
             goal="You want to schedule an orthopedic consultation for knee pain.",
         )
         scenario_id = "default"
+        scenario_name = "Default — knee pain consultation"
 
-    bridge = TwilioNovaBridge(twilio=stream, system_prompt=prompt, voice_id="tiffany")
+    bridge = TwilioNovaBridge(
+        twilio=stream, system_prompt=prompt, voice_id="tiffany",
+        scenario_id=scenario_id, scenario_name=scenario_name,
+    )
 
     try:
         transcript = await bridge.run()

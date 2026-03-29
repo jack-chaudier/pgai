@@ -14,8 +14,8 @@ log = logging.getLogger(__name__)
 MODEL = "gemini-3.1-flash-lite-preview"
 
 ANALYSIS_PROMPT = """\
-You are a QA analyst reviewing a phone call transcript between a patient (ASSISTANT) \
-and a medical office AI receptionist (USER) at Pivot Point Orthopedics.
+You are a QA analyst reviewing a phone call transcript between a patient (PATIENT) \
+and a medical office AI receptionist (AGENT) at Pivot Point Orthopedics.
 
 Analyze the transcript for bugs, quality issues, and edge-case failures in the \
 AI receptionist's (USER's) responses. Focus on:
@@ -90,7 +90,9 @@ def analyze_file(transcript_path: str) -> list[dict]:
     """Analyze a transcript JSON file and save analysis alongside it."""
     path = Path(transcript_path)
     with open(path) as f:
-        transcript = json.load(f)
+        data = json.load(f)
+    # Support both old format (flat list) and new format (with metadata)
+    transcript = data.get("transcript", data) if isinstance(data, dict) else data
 
     bugs = analyze_transcript(transcript)
 
