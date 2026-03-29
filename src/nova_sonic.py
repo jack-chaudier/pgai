@@ -27,7 +27,7 @@ from smithy_aws_core.identity import AWSCredentialsIdentity
 
 log = logging.getLogger(__name__)
 
-SENTINEL = None  # signals shutdown
+SENTINEL = object()  # unique sentinel to signal shutdown
 
 
 class _StaticCreds:
@@ -198,18 +198,23 @@ class NovaSonicSession:
 
     async def _recv_loop(self, output_stream) -> None:
         """Read events from Nova and put them in the outbound queue."""
+        event_count = 0
         async for event in output_stream:
             if not isinstance(event, InvokeModelWithBidirectionalStreamOutputChunk):
                 continue
             if event.value.bytes_ is None:
                 continue
             evt = json.loads(event.value.bytes_.decode("utf-8")).get("event", {})
+            event_count += 1
+            if event_count <= 5:
+                log.info("Nova raw event #%d: %s", event_count, list(evt.keys()))
             parsed = self._parse(evt)
             if parsed is not None:
                 try:
                     self._outbound.put_nowait(parsed)
                 except queue.Full:
                     pass
+        log.info("Nova recv loop ended after %d events", event_count)
 
     @staticmethod
     async def _send(stream, event_dict: dict) -> None:
