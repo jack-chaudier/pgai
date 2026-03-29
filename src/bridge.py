@@ -1,7 +1,11 @@
 """Bridge between Twilio media stream and Nova Sonic bidirectional stream."""
 
 import asyncio
+import json
 import logging
+import os
+import time
+from datetime import datetime
 
 from src.audio import nova_to_twilio, twilio_to_nova
 from src.nova_sonic import NovaSonicSession, SENTINEL
@@ -15,8 +19,7 @@ class TwilioNovaBridge:
         self.twilio = twilio
         self.nova = NovaSonicSession(system_prompt=system_prompt, voice_id=voice_id)
         self.transcript: list[dict] = []
-        self._current_role: str = ""
-        self._last_text: str = ""  # dedup consecutive identical texts
+        self._recent_texts: set[str] = set()  # sliding dedup window
 
     async def run(self) -> list[dict]:
         """Bridge audio between Twilio and Nova Sonic until the call ends."""
@@ -39,6 +42,7 @@ class TwilioNovaBridge:
         finally:
             self.nova.stop()
 
+        self._save_transcript()
         return self.transcript
 
     async def _twilio_to_nova(self):
@@ -49,7 +53,7 @@ class TwilioNovaBridge:
                 log.info("Call started: stream=%s call=%s", self.twilio.stream_sid, self.twilio.call_sid)
             elif event_type == "media":
                 media_count += 1
-                if media_count <= 3 or media_count % 250 == 0:
+                if media_count % 500 == 0:
                     log.info("Twilio→Nova: %d chunks", media_count)
                 nova_audio = twilio_to_nova(payload)
                 self.nova.send_audio(nova_audio)
@@ -70,26 +74,36 @@ class TwilioNovaBridge:
 
             if event.type == "audio":
                 audio_out_count += 1
-                if audio_out_count <= 3 or audio_out_count % 100 == 0:
+                if audio_out_count % 200 == 0:
                     log.info("Nova→Twilio: %d audio chunks", audio_out_count)
                 twilio_audio = nova_to_twilio(event.data)
                 await self.twilio.send_audio(twilio_audio)
 
-            elif event.type == "text_start":
-                self._current_role = event.role
-
             elif event.type == "text":
                 text = event.data.strip()
-                # Filter out control messages and empty text
-                if not text or text.startswith("{") or text.startswith("\"interrupted"):
+                if not text or text.startswith("{"):
                     continue
-                role = event.role or self._current_role
-                # Deduplicate: Nova often sends the same text twice
-                if text == self._last_text:
+                role = event.role or ""
+                # Deduplicate: Nova sends each response text twice
+                if text in self._recent_texts:
                     continue
-                self._last_text = text
+                self._recent_texts.add(text)
+                # Keep window from growing forever
+                if len(self._recent_texts) > 50:
+                    self._recent_texts.clear()
                 self.transcript.append({"role": role, "content": text})
-                log.info("[%s] %s", role, text[:100])
+                log.info("[%s] %s", role, text[:120])
 
             elif event.type == "turn_end":
                 log.info("Turn complete")
+
+    def _save_transcript(self):
+        """Save transcript to transcripts/ directory."""
+        if not self.transcript:
+            return
+        ts = datetime.now().strftime("%Y%m%d-%H%M%S")
+        path = f"transcripts/call-{ts}.json"
+        os.makedirs("transcripts", exist_ok=True)
+        with open(path, "w") as f:
+            json.dump(self.transcript, f, indent=2)
+        log.info("Transcript saved to %s", path)
