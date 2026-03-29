@@ -100,7 +100,7 @@ class TwilioNovaBridge:
                 if text in self._recent_texts:
                     continue
                 self._recent_texts.add(text)
-                if len(self._recent_texts) > 50:
+                if len(self._recent_texts) > 200:
                     self._recent_texts.clear()
                 # Merge consecutive same-role entries
                 if self.transcript and self.transcript[-1]["role"] == role:
