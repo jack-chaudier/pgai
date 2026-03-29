@@ -1,17 +1,20 @@
 """Bridge between Twilio media stream and Nova Sonic bidirectional stream."""
 
 import asyncio
+import base64
 import json
 import logging
 import os
-import time
+import wave
 from datetime import datetime
 
-from src.audio import nova_to_twilio, twilio_to_nova
+from src.audio import nova_to_twilio, twilio_to_nova, mulaw_decode
 from src.nova_sonic import NovaSonicSession, SENTINEL
 from src.twilio_ws import TwilioStream
 
 log = logging.getLogger(__name__)
+
+GOODBYE_PHRASES = {"bye", "goodbye", "good bye", "have a great day", "take care"}
 
 
 class TwilioNovaBridge:
@@ -19,7 +22,10 @@ class TwilioNovaBridge:
         self.twilio = twilio
         self.nova = NovaSonicSession(system_prompt=system_prompt, voice_id=voice_id)
         self.transcript: list[dict] = []
-        self._recent_texts: set[str] = set()  # sliding dedup window
+        self._recent_texts: set[str] = set()
+        self._inbound_audio: list[bytes] = []  # raw mulaw from Twilio
+        self._outbound_audio: list[bytes] = []  # raw mulaw sent to Twilio
+        self._goodbye_count = 0
 
     async def run(self) -> list[dict]:
         """Bridge audio between Twilio and Nova Sonic until the call ends."""
@@ -42,7 +48,7 @@ class TwilioNovaBridge:
         finally:
             self.nova.stop()
 
-        self._save_transcript()
+        self._save_call()
         return self.transcript
 
     async def _twilio_to_nova(self):
@@ -53,8 +59,8 @@ class TwilioNovaBridge:
                 log.info("Call started: stream=%s call=%s", self.twilio.stream_sid, self.twilio.call_sid)
             elif event_type == "media":
                 media_count += 1
-                if media_count % 500 == 0:
-                    log.info("Twilio→Nova: %d chunks", media_count)
+                # Save raw mulaw for recording
+                self._inbound_audio.append(base64.b64decode(payload))
                 nova_audio = twilio_to_nova(payload)
                 self.nova.send_audio(nova_audio)
             elif event_type == "stop":
@@ -64,7 +70,6 @@ class TwilioNovaBridge:
     async def _nova_to_twilio(self):
         """Forward Nova Sonic audio to Twilio, collect transcript."""
         loop = asyncio.get_event_loop()
-        audio_out_count = 0
         while True:
             event = await loop.run_in_executor(None, lambda: self.nova.get_event(timeout=0.05))
             if event is SENTINEL:
@@ -73,37 +78,61 @@ class TwilioNovaBridge:
                 continue
 
             if event.type == "audio":
-                audio_out_count += 1
-                if audio_out_count % 200 == 0:
-                    log.info("Nova→Twilio: %d audio chunks", audio_out_count)
-                twilio_audio = nova_to_twilio(event.data)
-                await self.twilio.send_audio(twilio_audio)
+                mulaw_b64 = nova_to_twilio(event.data)
+                self._outbound_audio.append(base64.b64decode(mulaw_b64))
+                await self.twilio.send_audio(mulaw_b64)
 
             elif event.type == "text":
                 text = event.data.strip()
                 if not text or text.startswith("{"):
                     continue
                 role = event.role or ""
-                # Deduplicate: Nova sends each response text twice
                 if text in self._recent_texts:
                     continue
                 self._recent_texts.add(text)
-                # Keep window from growing forever
                 if len(self._recent_texts) > 50:
                     self._recent_texts.clear()
                 self.transcript.append({"role": role, "content": text})
                 log.info("[%s] %s", role, text[:120])
+                self._check_goodbye(text)
 
             elif event.type == "turn_end":
-                log.info("Turn complete")
+                pass
 
-    def _save_transcript(self):
-        """Save transcript to transcripts/ directory."""
+    def _check_goodbye(self, text: str):
+        """Track goodbye signals from both sides."""
+        lower = text.lower()
+        if any(phrase in lower for phrase in GOODBYE_PHRASES):
+            self._goodbye_count += 1
+            if self._goodbye_count >= 2:
+                log.info("Both sides said goodbye — ending call")
+                # Close the WebSocket to end the call
+                asyncio.create_task(self.twilio.ws.close())
+
+    def _save_call(self):
+        """Save transcript and audio recordings."""
         if not self.transcript:
             return
+
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
-        path = f"transcripts/call-{ts}.json"
         os.makedirs("transcripts", exist_ok=True)
-        with open(path, "w") as f:
+
+        # Save transcript JSON
+        transcript_path = f"transcripts/call-{ts}.json"
+        with open(transcript_path, "w") as f:
             json.dump(self.transcript, f, indent=2)
-        log.info("Transcript saved to %s", path)
+        log.info("Transcript saved to %s", transcript_path)
+
+        # Save audio recordings as WAV (8kHz mulaw → 8kHz PCM16)
+        for label, chunks in [("inbound", self._inbound_audio), ("outbound", self._outbound_audio)]:
+            if not chunks:
+                continue
+            raw = b"".join(chunks)
+            pcm = mulaw_decode(raw)
+            wav_path = f"transcripts/call-{ts}-{label}.wav"
+            with wave.open(wav_path, "wb") as wf:
+                wf.setnchannels(1)
+                wf.setsampwidth(2)
+                wf.setframerate(8000)
+                wf.writeframes(pcm.tobytes())
+            log.info("Audio saved to %s (%.1fs)", wav_path, len(pcm) / 8000)
