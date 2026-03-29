@@ -5,8 +5,11 @@ import base64
 import json
 import logging
 import os
+import time
 import wave
 from datetime import datetime
+
+import numpy as np
 
 from src.audio import nova_to_twilio, twilio_to_nova, mulaw_decode
 from src.nova_sonic import NovaSonicSession, SENTINEL
@@ -16,22 +19,25 @@ log = logging.getLogger(__name__)
 
 GOODBYE_PHRASES = {"bye", "goodbye", "good bye", "have a great day", "take care"}
 MAX_CALL_DURATION = 180  # seconds
+SAMPLE_RATE = 8000  # recording sample rate
 
 
 class TwilioNovaBridge:
-    def __init__(self, twilio: TwilioStream, system_prompt: str, voice_id: str = "matthew"):
+    def __init__(self, twilio: TwilioStream, system_prompt: str, voice_id: str = "tiffany"):
         self.twilio = twilio
         self.nova = NovaSonicSession(system_prompt=system_prompt, voice_id=voice_id)
         self.transcript: list[dict] = []
         self._recent_texts: set[str] = set()
-        self._inbound_audio: list[bytes] = []  # raw mulaw from Twilio
-        self._outbound_audio: list[bytes] = []  # raw mulaw sent to Twilio
+        # Audio timeline: list of (timestamp, direction, mulaw_bytes)
+        self._audio_timeline: list[tuple[float, str, bytes]] = []
+        self._call_start: float = 0
         self._goodbye_count = 0
 
     async def run(self) -> list[dict]:
         """Bridge audio between Twilio and Nova Sonic until the call ends."""
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, self.nova.start)
+        self._call_start = time.monotonic()
         log.info("Nova Sonic connected, bridging audio")
 
         tasks = [
@@ -61,8 +67,8 @@ class TwilioNovaBridge:
                 log.info("Call started: stream=%s call=%s", self.twilio.stream_sid, self.twilio.call_sid)
             elif event_type == "media":
                 media_count += 1
-                # Save raw mulaw for recording
-                self._inbound_audio.append(base64.b64decode(payload))
+                raw = base64.b64decode(payload)
+                self._audio_timeline.append((time.monotonic(), "in", raw))
                 nova_audio = twilio_to_nova(payload)
                 self.nova.send_audio(nova_audio)
             elif event_type == "stop":
@@ -81,7 +87,8 @@ class TwilioNovaBridge:
 
             if event.type == "audio":
                 mulaw_b64 = nova_to_twilio(event.data)
-                self._outbound_audio.append(base64.b64decode(mulaw_b64))
+                raw = base64.b64decode(mulaw_b64)
+                self._audio_timeline.append((time.monotonic(), "out", raw))
                 await self.twilio.send_audio(mulaw_b64)
 
             elif event.type == "text":
@@ -102,45 +109,56 @@ class TwilioNovaBridge:
                 pass
 
     async def _max_duration_timer(self):
-        """Safety net: end the call after MAX_CALL_DURATION seconds."""
         await asyncio.sleep(MAX_CALL_DURATION)
         log.info("Max call duration reached (%ds) — ending call", MAX_CALL_DURATION)
         await self.twilio.ws.close()
 
     def _check_goodbye(self, text: str):
-        """Track goodbye signals from both sides."""
         lower = text.lower()
         if any(phrase in lower for phrase in GOODBYE_PHRASES):
             self._goodbye_count += 1
             if self._goodbye_count >= 2:
                 log.info("Both sides said goodbye — ending call")
-                # Close the WebSocket to end the call
                 asyncio.create_task(self.twilio.ws.close())
 
     def _save_call(self):
-        """Save transcript and audio recordings."""
+        """Save transcript JSON and combined stereo WAV."""
         if not self.transcript:
             return
 
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
         os.makedirs("transcripts", exist_ok=True)
 
-        # Save transcript JSON
+        # Save transcript
         transcript_path = f"transcripts/call-{ts}.json"
         with open(transcript_path, "w") as f:
             json.dump(self.transcript, f, indent=2)
         log.info("Transcript saved to %s", transcript_path)
 
-        # Save audio recordings as WAV (8kHz mulaw → 8kHz PCM16)
-        for label, chunks in [("inbound", self._inbound_audio), ("outbound", self._outbound_audio)]:
-            if not chunks:
-                continue
-            raw = b"".join(chunks)
-            pcm = mulaw_decode(raw)
-            wav_path = f"transcripts/call-{ts}-{label}.wav"
-            with wave.open(wav_path, "wb") as wf:
-                wf.setnchannels(1)
-                wf.setsampwidth(2)
-                wf.setframerate(8000)
-                wf.writeframes(pcm.tobytes())
-            log.info("Audio saved to %s (%.1fs)", wav_path, len(pcm) / 8000)
+        if not self._audio_timeline:
+            return
+
+        # Build stereo WAV: left = inbound (PGAI agent), right = outbound (our bot)
+        total_duration = self._audio_timeline[-1][0] - self._call_start + 0.5
+        total_samples = int(total_duration * SAMPLE_RATE)
+        left = np.zeros(total_samples, dtype=np.int16)   # inbound
+        right = np.zeros(total_samples, dtype=np.int16)   # outbound
+
+        for timestamp, direction, mulaw_bytes in self._audio_timeline:
+            offset = int((timestamp - self._call_start) * SAMPLE_RATE)
+            pcm = mulaw_decode(mulaw_bytes)
+            end = min(offset + len(pcm), total_samples)
+            n = end - offset
+            if n > 0 and offset >= 0:
+                channel = left if direction == "in" else right
+                channel[offset:end] = pcm[:n]
+
+        # Interleave stereo
+        stereo = np.column_stack((left, right)).flatten()
+        wav_path = f"transcripts/call-{ts}.wav"
+        with wave.open(wav_path, "wb") as wf:
+            wf.setnchannels(2)
+            wf.setsampwidth(2)
+            wf.setframerate(SAMPLE_RATE)
+            wf.writeframes(stereo.tobytes())
+        log.info("Audio saved to %s (%.1fs stereo)", wav_path, total_duration)

@@ -125,16 +125,22 @@ class NovaSonicSession:
         )
 
         async def _setup():
-            await self._send(stream, {"event": {"sessionStart": {"inferenceConfiguration": {
-                "maxTokens": 1024, "topP": 0.9, "temperature": 0.7,
-            }}}})
+            await self._send(stream, {"event": {"sessionStart": {
+                "inferenceConfiguration": {
+                    "maxTokens": 1024, "topP": 0.9, "temperature": 0.7,
+                },
+                "turnDetectionConfiguration": {
+                    "endpointingSensitivity": "LOW",
+                },
+            }}})
             await self._send(stream, {"event": {"promptStart": {
                 "promptName": self._prompt_name,
                 "textOutputConfiguration": {"mediaType": "text/plain"},
                 "audioOutputConfiguration": {
                     "mediaType": "audio/lpcm", "sampleRateHertz": 24000,
                     "sampleSizeBits": 16, "channelCount": 1,
-                    "voiceId": self.voice_id,
+                    "voiceId": self.voice_id, "encoding": "base64",
+                    "audioType": "SPEECH",
                 },
             }}})
             sys_name = str(uuid.uuid4())
@@ -156,6 +162,7 @@ class NovaSonicSession:
                 "audioInputConfiguration": {
                     "mediaType": "audio/lpcm", "sampleRateHertz": 16000,
                     "sampleSizeBits": 16, "channelCount": 1,
+                    "encoding": "base64", "audioType": "SPEECH",
                 },
             }}})
             # Keep sending silence until output is ready
