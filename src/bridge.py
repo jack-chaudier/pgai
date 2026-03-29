@@ -18,7 +18,7 @@ from src.twilio_ws import TwilioStream
 log = logging.getLogger(__name__)
 
 GOODBYE_PHRASES = {"bye", "goodbye", "good bye", "have a great day", "take care"}
-MAX_CALL_DURATION = 180  # seconds
+MAX_CALL_DURATION = 300  # seconds
 SAMPLE_RATE = 8000  # recording sample rate
 
 
@@ -102,7 +102,11 @@ class TwilioNovaBridge:
                 self._recent_texts.add(text)
                 if len(self._recent_texts) > 50:
                     self._recent_texts.clear()
-                self.transcript.append({"role": role, "content": text})
+                # Merge consecutive same-role entries
+                if self.transcript and self.transcript[-1]["role"] == role:
+                    self.transcript[-1]["content"] += " " + text
+                else:
+                    self.transcript.append({"role": role, "content": text})
                 log.info("[%s] %s", role, text[:120])
                 self._check_goodbye(text)
 
