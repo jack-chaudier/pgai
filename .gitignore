@@ -33,8 +33,6 @@ env/
 *.mp3
 *.ogg
 
-# Transcripts (generated at runtime, committed selectively)
-transcripts/*.json
 
 # uv
 .python-version
