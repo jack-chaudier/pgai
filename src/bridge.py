@@ -92,7 +92,8 @@ class TwilioNovaBridge:
                 await self.twilio.send_audio(mulaw_b64)
 
             elif event.type == "text":
-                text = event.data.strip()
+                # Clean up: Nova sometimes includes newlines and multi-part text
+                text = " ".join(event.data.split()).strip()
                 if not text or text.startswith("{"):
                     continue
                 role = event.role or ""
