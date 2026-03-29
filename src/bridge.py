@@ -16,10 +16,10 @@ class TwilioNovaBridge:
         self.nova = NovaSonicSession(system_prompt=system_prompt, voice_id=voice_id)
         self.transcript: list[dict] = []
         self._current_role: str = ""
+        self._last_text: str = ""  # dedup consecutive identical texts
 
     async def run(self) -> list[dict]:
         """Bridge audio between Twilio and Nova Sonic until the call ends."""
-        # Start Nova in background thread (blocks until connected)
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, self.nova.start)
         log.info("Nova Sonic connected, bridging audio")
@@ -34,10 +34,7 @@ class TwilioNovaBridge:
                 exc = t.exception()
                 if exc:
                     log.error("Task %s failed: %s", t.get_name(), exc)
-                else:
-                    log.info("Task %s completed normally", t.get_name())
             for t in pending:
-                log.info("Cancelling task %s", t.get_name())
                 t.cancel()
         finally:
             self.nova.stop()
@@ -52,12 +49,12 @@ class TwilioNovaBridge:
                 log.info("Call started: stream=%s call=%s", self.twilio.stream_sid, self.twilio.call_sid)
             elif event_type == "media":
                 media_count += 1
-                if media_count <= 3 or media_count % 50 == 0:
-                    log.info("Twilio→Nova audio chunk #%d", media_count)
+                if media_count <= 3 or media_count % 250 == 0:
+                    log.info("Twilio→Nova: %d chunks", media_count)
                 nova_audio = twilio_to_nova(payload)
                 self.nova.send_audio(nova_audio)
             elif event_type == "stop":
-                log.info("Call ended (received %d audio chunks)", media_count)
+                log.info("Call ended (%d audio chunks)", media_count)
                 return
 
     async def _nova_to_twilio(self):
@@ -67,15 +64,14 @@ class TwilioNovaBridge:
         while True:
             event = await loop.run_in_executor(None, lambda: self.nova.get_event(timeout=0.05))
             if event is SENTINEL:
-                log.info("Nova sent shutdown sentinel")
                 return
             if event is None:
                 continue
 
             if event.type == "audio":
                 audio_out_count += 1
-                if audio_out_count <= 3 or audio_out_count % 50 == 0:
-                    log.info("Nova→Twilio audio chunk #%d", audio_out_count)
+                if audio_out_count <= 3 or audio_out_count % 100 == 0:
+                    log.info("Nova→Twilio: %d audio chunks", audio_out_count)
                 twilio_audio = nova_to_twilio(event.data)
                 await self.twilio.send_audio(twilio_audio)
 
@@ -83,9 +79,17 @@ class TwilioNovaBridge:
                 self._current_role = event.role
 
             elif event.type == "text":
+                text = event.data.strip()
+                # Filter out control messages and empty text
+                if not text or text.startswith("{") or text.startswith("\"interrupted"):
+                    continue
                 role = event.role or self._current_role
-                self.transcript.append({"role": role, "content": event.data})
-                log.info("[%s] %s", role, event.data[:80])
+                # Deduplicate: Nova often sends the same text twice
+                if text == self._last_text:
+                    continue
+                self._last_text = text
+                self.transcript.append({"role": role, "content": text})
+                log.info("[%s] %s", role, text[:100])
 
             elif event.type == "turn_end":
                 log.info("Turn complete")
