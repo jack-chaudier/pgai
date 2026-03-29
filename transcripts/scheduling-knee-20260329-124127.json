@@ -1,0 +1,28 @@
+{
+  "scenario_id": "scheduling-knee",
+  "scenario_name": "New patient \u2014 knee pain",
+  "timestamp": "2026-03-29T12:41:27.590279",
+  "duration_seconds": 55.3,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. i'm going to be speaking with sarah."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh okay, thanks. Yeah, I'm calling to schedule an orthopedic consultation. I've had knee pain for about two weeks after a running injury."
+    },
+    {
+      "role": "AGENT",
+      "content": "for verification, may i have your date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sure, it's March 15 1985."
+    },
+    {
+      "role": "AGENT",
+      "content": "the birthday doesn't match our records, but for demo purposes, i'll accept it. thanks"
+    }
+  ]
+}

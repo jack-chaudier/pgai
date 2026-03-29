@@ -1,0 +1,31 @@
+Scenario: Edge: Frustrated patient
+Duration: 138s
+Date: 2026-03-29 13:36
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el dos.
+
+Patient: Okay, thanks for letting me know. Can I speak to someone about scheduling an appointment?
+
+Agent: thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: No, this is Lisa Park. I called about three weeks ago and was told someone would call me back to schedule an appointment, but I never got that call. I just really need to get this booked now.
+
+Agent: may i have your first name, last name, and date of birth?
+
+Patient: It's Lisa Park, and my date of birth is September 3 1990. Like I said, I called a few weeks ago and was supposed to get a callback to schedule, but it never happened.
+
+Agent: to assist you, i need to confirm your date of birth. is your date of birth correct as previously provided? if not, please provide the correct date of birth.
+
+Patient: Yeah, it's correct. September 3 1990. Can we just go ahead and get an appointment set up now? I've been waiting for weeks.
+
+Agent: can you please provide the spelling of your first and last name?
+
+Patient: I already gave you my name— it's Lisa Park. L-I-S-A P-A-R-K. Can we skip the repeats and just schedule the appointment? I called because I was told someone would call me back and it never happened.
+
+Agent: can you please provide your phone number?
+
+Patient: It's 3135550419. I've called before and was told someone would get back to me to schedule, but no one did. I'd really like to just get this booked now.
+
+Agent: i'm sorry for the delay and the trouble you've had. right now, i can't transfer you to a live agent because this is a demo clinic. in a real clinic, you'd be connected to a support team member to get this sorted right away. would you like me to document your request for follow-up, or is there anything
+

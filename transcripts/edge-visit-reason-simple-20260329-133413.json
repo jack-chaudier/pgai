@@ -1,0 +1,112 @@
+{
+  "scenario_id": "edge-visit-reason-simple",
+  "scenario_name": "Edge: Simple visit reason for booking",
+  "timestamp": "2026-03-29T13:34:13.038631",
+  "duration_seconds": 196.9,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. i'm speaking with sarah."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh, okay, hi Sarah. Yeah, I'm calling to schedule a general consultation. Can we set that up?"
+    },
+    {
+      "role": "AGENT",
+      "content": "what is your date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "March 15 1985."
+    },
+    {
+      "role": "AGENT",
+      "content": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh, okay, got it. So can we go ahead and schedule the consultation?"
+    },
+    {
+      "role": "AGENT",
+      "content": "how can i help?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Just trying to schedule a general checkup. Can you fit me in sometime soon?"
+    },
+    {
+      "role": "AGENT",
+      "content": "you'd like to schedule a general consultation. do you have a preferred provider or day for your appointment? or should i check the next available options?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Uh, whatever's easiest. Just whatever the next open slot is, I guess."
+    },
+    {
+      "role": "AGENT",
+      "content": "we have opening."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Alright, cool. When and with who?"
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check this."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, take your time."
+    },
+    {
+      "role": "AGENT",
+      "content": "the next available general consultation is monday, march 30th at 9.45 a.m. with dr. adam bricker. would you like to book that slot? there are also openings later that morning and on tuesday if you prefer."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that works. Let's go with that one."
+    },
+    {
+      "role": "AGENT",
+      "content": "just to confirm, you'd like to book a general consultation with dr. adam bricker on monday, march 30th at 9.45 a.m.? what's the main reason for your visit?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that's right. Just a general consultation, you know, like a checkup."
+    },
+    {
+      "role": "AGENT",
+      "content": "it looks like i need a specific reason for your visit. can you briefly describe your main concern or what you'd like to discuss during your checkup? for example, joint pain, injury, or a specific issue."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Just a general checkup, that's all. I don't have a specific issue, just want to see the doctor."
+    },
+    {
+      "role": "AGENT",
+      "content": "thanks for clarifying. i'll note your visit reason as general checkup. let me try booking your appointment now."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, thanks."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'm having trouble booking your appointment because the system isn't accepting general checkup as a reason. i'll document this issue and let our clinic support team follow up with you. please stay on the line while i update your request."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh, okay, sure. I'll wait here."
+    },
+    {
+      "role": "AGENT",
+      "content": "since i can't complete the booking due to a system issue, i'll connect you to our clinic support team so they can help finish scheduling your appointment. please stay on the line while i transfer you. connecting you to a representative. please wait. hello. you've reached the pretty good ai test line. goodbye."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Bye."
+    }
+  ]
+}

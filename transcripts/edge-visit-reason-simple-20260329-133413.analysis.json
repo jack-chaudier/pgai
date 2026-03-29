@@ -1,0 +1,32 @@
+[
+  {
+    "bug": "Inappropriate disclosure of system limitations",
+    "severity": "Low",
+    "details": "The agent explicitly stated, 'the birthday doesn't match our records, but for demo purposes, i'll accept it.' This breaks the fourth wall, is unprofessional, and suggests a lack of robust security/verification protocols.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "Looping/Redundant questioning",
+    "severity": "Medium",
+    "details": "After the patient stated their intent to book a consultation, the agent failed to acknowledge the context and simply asked 'how can i help?', forcing the patient to repeat their request for a checkup.",
+    "quote": "[PATIENT] Oh, okay, got it. So can we go ahead and schedule the consultation?\n[AGENT] how can i help?"
+  },
+  {
+    "bug": "Vague conversational output",
+    "severity": "Low",
+    "details": "The agent said 'we have opening' without providing any actual information, which is grammatically incorrect and unhelpful, forcing the patient to prompt for details.",
+    "quote": "[AGENT] we have opening."
+  },
+  {
+    "bug": "Booking logic failure (Validation error)",
+    "severity": "High",
+    "details": "The system failed to book the appointment because it rejected 'general checkup' as a visit reason, despite the agent explicitly accepting it moments prior. This is a logic failure in the integration between the conversational interface and the booking database.",
+    "quote": "i'm having trouble booking your appointment because the system isn't accepting general checkup as a reason."
+  },
+  {
+    "bug": "Failed handover/Termination of call",
+    "severity": "Critical",
+    "details": "The agent promised to transfer the patient to a clinic support representative to resolve the booking error, but instead connected the patient to a test line that immediately hung up ('goodbye'). The patient was abandoned rather than transferred to a human.",
+    "quote": "i'll connect you to our clinic support team so they can help finish scheduling your appointment... hello. you've reached the pretty good ai test line. goodbye."
+  }
+]

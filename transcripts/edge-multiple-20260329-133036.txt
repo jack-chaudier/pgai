@@ -1,0 +1,51 @@
+Scenario: Edge: Multiple issues in one call
+Duration: 274s
+Date: 2026-03-29 13:30
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: Yeah, this is Michael Torres. I'm calling about my knee and shoulder pain. I was wondering if I can talk to one doctor about both, or if I need separate appointments. Also, could you tell me if there's a difference in cost?
+
+Agent: please provide your first name.
+
+Patient: It's Michael, like I just said. Michael Torres. I've got both knee and shoulder pain and want to know if one visit can cover both, or if I need separate appointments. Also curious about any cost difference.
+
+Agent: please provide your date of birth.
+
+Patient: June 22 1978. Like I said earlier, I'm calling about knee and shoulder pain— can one consultation cover both, or do I need separate appointments? Also, any difference in cost?
+
+Agent: i am unable to answer questions related to referrals. appointment requirements, or costs. please let me confirm your date of birth. if it is not correct, please provide the correct date of birth.
+
+Patient: I already gave you my date of birth: June 22 1978. Can we move forward? I need to know if one appointment can cover both my knee and shoulder issues, and if there's a cost difference.
+
+Agent: could you
+
+Patient: Sorry, could you what? I think I said my date of birth was June 22 1978. Can we talk about whether one appointment can cover both my knee and shoulder, and if there's a cost difference?
+
+Agent: could you please spell your first and last name?
+
+Patient: Okay, it's Michael, M-I-C-H-A-E-L, and last name Torres, T-O-R-R-E-S. Again, I have knee and shoulder pain and want to know if one visit can cover both, or if I need separate appointments, and if there's a cost difference.
+
+Agent: can you please provide your phone number?
+
+Patient: It's 3135550283. Like I’ve been saying, I’ve got both knee and shoulder pain. Can one consultation cover both, or do I need separate appointments? Also, is there a cost difference?
+
+Agent: i can connect you to our patient support team. however, i'm a pretty good ai and can do many of the things an operator can. do you want to give me a try?
+
+Patient: Yeah, sure, let’s keep going. I’ve told you my info: Michael Torres, June 22 1978 3135550283. I need to know if one appointment can handle both my knee and shoulder, or if I need separate ones, and if there’s a cost difference.
+
+Agent: live transfer is not available right now since this is a demo clinic. normally, i would connect you to a human for these questions. for most orthopedic clinics, one consultation can often cover multiple concerns like knee and shoulder pain, but it depends on the provider's policy and your insurer. there may or may not be a cost difference depending on how your insurance bills for multiple issues in one visit. for a definite answer and to discuss costs, our clinic support team will need to follow up with you. would you like me to have them call you back as soon as possible?
+
+Patient: Okay, yeah, that’d be good. Just have them call me back soon so we can sort out whether one appointment can cover both my knee and shoulder and what the cost difference might be. My number’s 3135550283.
+
+Agent: i'm unable to create a follow-up record right now. due to a technical issue and live transfer isn't available in this demo. i recommend calling the clinic directly during business hours for a quick answer. sorry for the trouble. is there anything else i can try to help with today?
+
+Patient: Alright, thanks anyway. I guess I’ll call back during the day then. If I can’t get through, I’ll just come in. Thanks.
+
+Agent: understood. if you have any other questions, feel free to call back. hope you get answers soon and feel better.
+
+Patient: Yeah, thanks. Bye.
+
+Agent: take care. goodbye.
+

@@ -1,0 +1,112 @@
+{
+  "scenario_id": "insurance",
+  "scenario_name": "Insurance question",
+  "timestamp": "2026-03-29T13:06:56.069772",
+  "duration_seconds": 250.6,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "No, this is Lisa Park. I was calling to ask if you accept Blue Cross Blue Shield insurance."
+    },
+    {
+      "role": "AGENT",
+      "content": "thanks for letting me know, lisa. i can help with your insurance question. are you asking for yourself or for someone else?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It's for myself. I just want to know if you accept Blue Cross Blue Shield."
+    },
+    {
+      "role": "AGENT",
+      "content": "pivot point orthopedics does accept most insurance plans, including blue cross blue shield. if you'd like to update your insurance information or have specific questions about your coverage, i can help with that too. would you like to update your insurance details on file?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh okay, that's good to hear. I don't think I need to update anything right now, but thanks. Do you happen to know what the out-of-pocket cost is for a consultation if someone doesn't have insurance?"
+    },
+    {
+      "role": "AGENT",
+      "content": "i don't have exact out-of-pocket pricing details for consultations. costs can vary depending on the type of visit and services needed. i can have our clinic support team follow up with you about self-pay rates if you'd like. would you like me to have someone reach out with more information?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that would be helpful. Thanks for letting me know you accept my insurance. I\u2019ll wait for that follow-up."
+    },
+    {
+      "role": "AGENT",
+      "content": "may i have your first name, last name, and date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It's Lisa Park, and my date of birth is September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday as september 3rd, 1990. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yes, that's right."
+    },
+    {
+      "role": "AGENT",
+      "content": "could you spell your first and last name for me please?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sure, it's L-I-S-A P-A-R-K."
+    },
+    {
+      "role": "AGENT",
+      "content": "what other phone number do we have on file for you?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It's just the one, 3135550419. That's the number I'm calling from."
+    },
+    {
+      "role": "AGENT",
+      "content": "you're calling from three one three five one three seven three one six is that the best number for follow up?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "No, that's not my number. I'm calling from 3135550419."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me confirm i have your number as three one three five five five zero four one nine. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yes, that's correct. I already gave you that. It's Lisa Park, September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday as september 3rd, 1990."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yes, that's right, I already told you that. I already did. It's L-I-S-A P-A-R-K. I told you, it's just 3135550419."
+    },
+    {
+      "role": "AGENT",
+      "content": "live transfer isn't available right now since this is a demo clinic, but in a real call i would have connected you to a team member for self-pay pricing details. is there anything else i can help you with today?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "No, that\u2019s all I needed. Thanks for the help."
+    },
+    {
+      "role": "AGENT",
+      "content": "you're welcome. the clinic support team will follow up with self-pay pricing details as soon as possible. have a great day!"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Bye."
+    }
+  ]
+}

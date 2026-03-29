@@ -1,0 +1,32 @@
+[
+  {
+    "bug": "Redundant data collection",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for information (Name, DOB) that the patient has already provided, creating a frustrating UX loop that ignores the patient's previous input.",
+    "quote": "[PATIENT] It's Michael Torres, June 22 1978. I told you that already."
+  },
+  {
+    "bug": "Inefficient data collection flow",
+    "severity": "Low",
+    "details": "The agent asks for name, DOB, and phone number in separate, disjointed requests rather than verifying existing information, causing the patient to express agitation.",
+    "quote": "[AGENT] can you please provide the spelling of your first and last name? ... [AGENT] please provide your phone number."
+  },
+  {
+    "bug": "Failure to access or utilize CRM/EHR data",
+    "severity": "Critical",
+    "details": "The AI is unable to locate the patient's record despite the patient providing accurate identifying information. This is a primary function failure for a receptionist.",
+    "quote": "[AGENT] i can't complete the cancellation right now because i'm unable to find your record in the system."
+  },
+  {
+    "bug": "Inability to perform primary task and escalation failure",
+    "severity": "High",
+    "details": "The agent fails to complete the core task (cancellation) and cannot offer a live transfer (as it is unavailable), leaving the patient in a 'dead end' state without a confirmed resolution.",
+    "quote": "normally i would transfer you to a live support agent, but that option isn't available at the moment."
+  },
+  {
+    "bug": "Lack of knowledge base integration",
+    "severity": "Medium",
+    "details": "The AI fails to provide the basic information requested regarding clinic policy, forcing the patient to wait for a callback. A receptionist should be able to state the standard office policy.",
+    "quote": "[AGENT] i don't have access to the specific cancellation policy details for pivot point orthopedics."
+  }
+]

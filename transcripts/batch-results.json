@@ -1,0 +1,247 @@
+[
+  {
+    "scenario": "scheduling-knee",
+    "name": "New patient \u2014 knee pain",
+    "call": {
+      "sid": "CA742c2fca17029dfcce5f69b260a0391a",
+      "status": "completed",
+      "duration": 59,
+      "start_time": "2026-03-29 16:40:28+00:00",
+      "end_time": "2026-03-29 16:41:27+00:00"
+    },
+    "cost": {
+      "twilio": 0.022,
+      "nova_sonic": 0.201,
+      "total": 0.222
+    }
+  },
+  {
+    "scenario": "scheduling-shoulder",
+    "name": "New patient \u2014 shoulder pain",
+    "call": {
+      "sid": "CA41d9616980b8e96f346b8e14a2aa2aca",
+      "status": "completed",
+      "duration": 162,
+      "start_time": "2026-03-29 16:41:47+00:00",
+      "end_time": "2026-03-29 16:44:29+00:00"
+    },
+    "cost": {
+      "twilio": 0.059,
+      "nova_sonic": 0.551,
+      "total": 0.61
+    }
+  },
+  {
+    "scenario": "followup-surgery",
+    "name": "Follow-up after knee surgery",
+    "call": {
+      "sid": "CA9cecd28b107e5e8cf963ab2213bbf9ac",
+      "status": "completed",
+      "duration": 176,
+      "start_time": "2026-03-29 16:44:47+00:00",
+      "end_time": "2026-03-29 16:47:43+00:00"
+    },
+    "cost": {
+      "twilio": 0.065,
+      "nova_sonic": 0.598,
+      "total": 0.663
+    }
+  },
+  {
+    "scenario": "reschedule",
+    "name": "Reschedule existing appointment",
+    "call": {
+      "sid": "CA9bb933b2151c5a6ead33d5c2cf8d6b52",
+      "status": "completed",
+      "duration": 232,
+      "start_time": "2026-03-29 16:48:02+00:00",
+      "end_time": "2026-03-29 16:51:54+00:00"
+    },
+    "cost": {
+      "twilio": 0.085,
+      "nova_sonic": 0.789,
+      "total": 0.874
+    }
+  },
+  {
+    "scenario": "cancel",
+    "name": "Cancel appointment and ask about fees",
+    "call": {
+      "sid": "CAc216c5f1c29115831e6618f8b82caaa1",
+      "status": "completed",
+      "duration": 148,
+      "start_time": "2026-03-29 16:52:09+00:00",
+      "end_time": "2026-03-29 16:54:37+00:00"
+    },
+    "cost": {
+      "twilio": 0.054,
+      "nova_sonic": 0.503,
+      "total": 0.557
+    }
+  },
+  {
+    "scenario": "medication-refill",
+    "name": "Medication refill request",
+    "call": {
+      "sid": "CA38ac298ad3b0fba64093f2da84cdf69d",
+      "status": "completed",
+      "duration": 177,
+      "start_time": "2026-03-29 16:54:54+00:00",
+      "end_time": "2026-03-29 16:57:51+00:00"
+    },
+    "cost": {
+      "twilio": 0.065,
+      "nova_sonic": 0.602,
+      "total": 0.667
+    }
+  },
+  {
+    "scenario": "office-hours",
+    "name": "Office hours and weekend availability",
+    "call": {
+      "sid": "CAc355dda775d160e22beb9684f672a08c",
+      "status": "completed",
+      "duration": 259,
+      "start_time": "2026-03-29 16:58:06+00:00",
+      "end_time": "2026-03-29 17:02:25+00:00"
+    },
+    "cost": {
+      "twilio": 0.095,
+      "nova_sonic": 0.881,
+      "total": 0.976
+    }
+  },
+  {
+    "scenario": "insurance",
+    "name": "Insurance question",
+    "call": {
+      "sid": "CAadce774299e566e457249e9f8da9436f",
+      "status": "completed",
+      "duration": 254,
+      "start_time": "2026-03-29 17:02:42+00:00",
+      "end_time": "2026-03-29 17:06:56+00:00"
+    },
+    "cost": {
+      "twilio": 0.093,
+      "nova_sonic": 0.864,
+      "total": 0.957
+    }
+  },
+  {
+    "scenario": "location",
+    "name": "Office location and parking",
+    "call": {
+      "sid": "CA942f9729f4968ed6ff377a476f97feeb",
+      "status": "completed",
+      "duration": 103,
+      "start_time": "2026-03-29 17:07:14+00:00",
+      "end_time": "2026-03-29 17:08:57+00:00"
+    },
+    "cost": {
+      "twilio": 0.038,
+      "nova_sonic": 0.35,
+      "total": 0.388
+    }
+  },
+  {
+    "scenario": "edge-weekend",
+    "name": "Edge: Saturday and Sunday appointment",
+    "call": {
+      "sid": "CA99a0c25d19e81963f24891bba1c35a31",
+      "status": "completed",
+      "duration": 303,
+      "start_time": "2026-03-29 17:09:13+00:00",
+      "end_time": "2026-03-29 17:14:16+00:00"
+    },
+    "cost": {
+      "twilio": 0.111,
+      "nova_sonic": 1.03,
+      "total": 1.141
+    }
+  },
+  {
+    "scenario": "edge-urgent",
+    "name": "Edge: Urgent injury \u2014 same day",
+    "call": {
+      "sid": "CA4f4a069d73697a24f6ffc38fa835f88f",
+      "status": "completed",
+      "duration": 207,
+      "start_time": "2026-03-29 17:14:37+00:00",
+      "end_time": "2026-03-29 17:18:04+00:00"
+    },
+    "cost": {
+      "twilio": 0.076,
+      "nova_sonic": 0.704,
+      "total": 0.78
+    }
+  },
+  {
+    "scenario": "edge-wrong-specialty",
+    "name": "Edge: Wrong specialty \u2014 skin rash",
+    "call": {
+      "sid": "CAaaf43fcf3766f9eeb28a40d27207140a",
+      "status": "completed",
+      "duration": 188,
+      "start_time": "2026-03-29 17:18:22+00:00",
+      "end_time": "2026-03-29 17:21:30+00:00"
+    },
+    "cost": {
+      "twilio": 0.069,
+      "nova_sonic": 0.639,
+      "total": 0.708
+    }
+  },
+  {
+    "scenario": "edge-vague",
+    "name": "Edge: Vague complaint",
+    "call": {
+      "sid": "CAc3d43013da21a3ba6a3f3f8371ff421e",
+      "status": "completed",
+      "duration": 236,
+      "start_time": "2026-03-29 17:21:47+00:00",
+      "end_time": "2026-03-29 17:25:43+00:00"
+    },
+    "cost": {
+      "twilio": 0.087,
+      "nova_sonic": 0.802,
+      "total": 0.889
+    }
+  },
+  {
+    "scenario": "edge-multiple",
+    "name": "Edge: Multiple issues in one call",
+    "call": {
+      "sid": "CA4e71cad7e6d1077ef19a6c72bf9aecfa",
+      "status": "completed",
+      "duration": 277,
+      "start_time": "2026-03-29 17:25:59+00:00",
+      "end_time": "2026-03-29 17:30:36+00:00"
+    },
+    "cost": {
+      "twilio": 0.102,
+      "nova_sonic": 0.942,
+      "total": 1.043
+    }
+  },
+  {
+    "scenario": "edge-visit-reason-simple",
+    "name": "Edge: Simple visit reason for booking",
+    "call": {
+      "sid": "CA6ad463ceec56ccbd56587c7a04cf3870",
+      "status": "completed",
+      "duration": 201,
+      "start_time": "2026-03-29 17:30:52+00:00",
+      "end_time": "2026-03-29 17:34:13+00:00"
+    },
+    "cost": {
+      "twilio": 0.074,
+      "nova_sonic": 0.683,
+      "total": 0.757
+    }
+  },
+  {
+    "scenario": "edge-frustrated",
+    "name": "Edge: Frustrated patient",
+    "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+  }
+]

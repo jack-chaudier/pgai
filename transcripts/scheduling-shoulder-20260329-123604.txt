@@ -1,0 +1,53 @@
+Scenario: New patient — shoulder pain
+Duration: 193s
+Date: 2026-03-29 12:36
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: Yeah, this is Michael Torres. I called about my shoulder. I fell off a ladder about a week ago and it's been hurting ever since. I can't lift my arm above my head. I need to see an orthopedic doctor, any day works for me.
+
+Agent: may i have your first name, last name, and date of birth?
+
+Patient: It's Michael Torres, June 22 1978.
+
+Agent: i've heard your birthday is june 22nd, 1978. is that correct?
+
+Patient: Yeah, that's right.
+
+Agent: could you spell your first and last name for me, please?
+
+Patient: Sure, it's M-I-C-H-A-E-L T-O-R-R-E-S.
+
+Agent: what other phone number do we have on file for you?
+
+Patient: It's just 3135550283 that's the only one I use. I already gave you that it's Michael Torres, June 22 1978.
+
+Agent: i heard your birthday is june 22nd, 1978.
+
+Patient: Yeah, I already told the other person that, it's correct. I told the other person already it's M-I-C-H-A-E-L T-O-R-R-E-S. I only have that one number, 3135550283.
+
+Agent: i'm having trouble locating your record in our system. i'll connect you to our patient support team so they can help get you scheduled. please stay on the line.
+
+Patient: Okay, thanks.
+
+Agent: live transfer.
+
+Patient: Hello, this is Jessica from patient support, how can I help you today?
+
+Agent: you're welcome.
+
+Patient: Sorry, what do you need? I mentioned my shoulder injury from falling off a ladder and need to see an orthopedic doctor.
+
+Agent: thanks for clarifying. since i couldn't find your record earlier, our patient support team will help you get scheduled and set up as a new patient. they'll take it from here and make sure you get the care you need.
+
+Patient: Okay, that sounds good. Just let me know when I can come in.
+
+Agent: someone from the clinic will reach out soon to schedule your appointment and confirm your details. if you have any urgent symptoms, please call 911 or visit the nearest urgent care.
+
+Patient: Alright, thanks for your help. I’ll wait for their call.
+
+Agent: you're all set. the clinic team will contact you soon. take care.
+
+Patient: Okay, bye.
+

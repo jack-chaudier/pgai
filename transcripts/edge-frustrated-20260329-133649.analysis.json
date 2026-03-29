@@ -1,0 +1,20 @@
+[
+  {
+    "bug": "Redundant data collection flow",
+    "severity": "Medium",
+    "details": "The AI ignores information provided earlier in the conversation (name and DOB), forcing the user to repeat themselves multiple times. This leads to user frustration and a poor UX experience.",
+    "quote": "AGENT: may i have your first name, last name, and date of birth? ... AGENT: can you please provide the spelling of your first and last name?"
+  },
+  {
+    "bug": "Logic failure: Verification loop",
+    "severity": "High",
+    "details": "The AI asks the user to confirm their date of birth immediately after the user provided it, but the bot acts as if it hasn't processed the input. This is a failure in state management.",
+    "quote": "AGENT: to assist you, i need to confirm your date of birth. is your date of birth correct as previously provided?"
+  },
+  {
+    "bug": "Failure to address primary goal",
+    "severity": "Critical",
+    "details": "The patient explicitly requests to schedule an appointment throughout the call. The AI continues to ask for demographic details, acknowledges the user's frustration, but then fails to perform the requested scheduling task or offer a concrete booking path, essentially dead-ending the conversation.",
+    "quote": "PATIENT: Can we just go ahead and get an appointment set up now? ... AGENT: right now, i can't transfer you to a live agent because this is a demo clinic."
+  }
+]

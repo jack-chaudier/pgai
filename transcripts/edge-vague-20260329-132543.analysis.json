@@ -1,0 +1,14 @@
+[
+  {
+    "bug": "System crash/Hang-up error during handoff",
+    "severity": "Critical",
+    "details": "The AI failed to successfully hand off the call to a human representative, instead hitting an automated test line message that disconnected the patient. This leaves the patient without a booked appointment and causes a poor customer experience.",
+    "quote": "connecting you to a representative. please wait. hello, you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "bug": "System error on visit reason",
+    "severity": "High",
+    "details": "The booking process failed multiple times citing a 'system issue with the visit reason'. This suggests the AI's internal categorization for the appointment type ('new patient consultation for back pain') is incompatible with the booking system backend.",
+    "quote": "i'm having trouble confirming your appointment due to a system issue with the visit reason."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Inappropriate disclosure of system test status",
+    "severity": "Medium",
+    "details": "The agent explicitly tells the patient the data mismatch is being ignored 'for demo purposes'. This breaks the illusion of a professional medical environment and reveals sensitive system testing logic to the user.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "Redundant information gathering",
+    "severity": "Low",
+    "details": "The patient stated their intent (follow-up for knee surgery) in the first turn. After verifying the DOB, the agent asks 'how can i help you today?' as if the patient hadn't already provided the exact reason for the call.",
+    "quote": "how can i help you today?"
+  },
+  {
+    "bug": "Booking system failure",
+    "severity": "Critical",
+    "details": "The agent experiences a persistent 'system error' regarding the visit reason. The AI fails to self-correct, resulting in an inability to complete the primary task (booking the appointment).",
+    "quote": "i'm having trouble booking the appointment due to a system error with the visit reason."
+  },
+  {
+    "bug": "Call termination error during transfer",
+    "severity": "Critical",
+    "details": "The agent promises to connect the patient to a live representative to resolve the booking error. Instead of completing the transfer, the system routes the patient to a dead-end test line message that immediately hangs up on the user.",
+    "quote": "connecting you to a representative, please wait. hello, you've reached the pretty good ai test line. goodbye."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "bug": "Insecure identity verification process",
+    "severity": "High",
+    "details": "The AI identified a mismatch between the provided date of birth and the internal records, yet proceeded with the scheduling process regardless. This creates a data security and privacy risk by allowing a potential unauthorized user to book appointments or access patient records.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "Booking failure due to internal processing error",
+    "severity": "Critical",
+    "details": "The system failed to finalize the booking after successfully capturing all necessary data (provider, time, and visit reason). Vague 'system issues' regarding the visit reason prevent the user from completing their task, leading to a breakdown in core functionality.",
+    "quote": "there was an issue booking your appointment due to a problem with the visit reason. let me try again and see if i can resolve it."
+  },
+  {
+    "bug": "Poor error handling and communication",
+    "severity": "Medium",
+    "details": "When the booking failed, the AI's initial communication was cut off or mumbled, forcing the patient to ask for a repeat. This demonstrates a failure in the speech-to-text or voice-synthesis feedback loop, causing unnecessary user frustration.",
+    "quote": "it looks like there were [ASSISTANT] Sorry, I didn't catch that. Could you repeat what you said?"
+  }
+]

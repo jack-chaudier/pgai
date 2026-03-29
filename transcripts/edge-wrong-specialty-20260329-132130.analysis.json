@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Redundant data collection (UX failure)",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for the patient's name and date of birth despite the patient having provided this information earlier in the conversation. This causes user frustration and inefficient flow.",
+    "quote": "AGENT: may i have your first name, last name, and date of birth?"
+  },
+  {
+    "bug": "System error / Glitch",
+    "severity": "High",
+    "details": "The agent experiences a verbal glitch ('life tra') while attempting a live transfer, which is nonsensical and confusing to the patient.",
+    "quote": "AGENT: life tra"
+  },
+  {
+    "bug": "False promise of functionality (System error)",
+    "severity": "Critical",
+    "details": "The agent initiates a live transfer process but then immediately defaults to a 'demo mode' error message, stating the transfer is unavailable. A production AI should either have the integration active or inform the user immediately that a transfer is not possible before attempting it.",
+    "quote": "AGENT: i'm not finding your record in our system. i'll connect you to our patient support team... AGENT: this is a demo clinic. so live transfer isn't available right now."
+  },
+  {
+    "bug": "Failure to triage medical urgency",
+    "severity": "High",
+    "details": "The patient reports a skin rash that is 'getting worse.' The agent attempts to book an appointment without performing any basic triage or safety screening to determine if the rash requires emergency care, only addressing the specialty mismatch after the booking attempt fails.",
+    "quote": "PATIENT: I\u2019m calling because I\u2019ve got this skin rash on my arm that\u2019s been getting worse... AGENT: thanks for letting me know, lisa. i'll help you get scheduled."
+  }
+]

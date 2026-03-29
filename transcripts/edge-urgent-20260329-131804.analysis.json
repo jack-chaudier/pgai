@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Factual error/Identity confusion",
+    "severity": "Medium",
+    "details": "The AI greeted the patient as 'Sarah' despite the patient immediately clarifying their name is Michael Torres. The AI failed to update its context, creating confusion and frustration.",
+    "quote": "am i speaking with sarah? [PATIENT] Yeah, this is Michael Torres."
+  },
+  {
+    "bug": "UX failure: Repetitive information gathering",
+    "severity": "Medium",
+    "details": "The AI asked for the patient's name, DOB, and spelling despite the patient having already provided this information. This creates a poor user experience, especially for someone in pain.",
+    "quote": "i can help you schedule an appointment. to proceed, may i have your first name? ... can you please spell your first and last name for me?"
+  },
+  {
+    "bug": "Logic/Workflow failure: Failure to document urgent request",
+    "severity": "High",
+    "details": "The AI claimed it could not document the patient's request because 'live support is open' and then contradicted its own offer to document the request. It essentially abandoned the patient's request for help without performing any actionable system task.",
+    "quote": "would you like me to document your request for the clinic to call you back as soon as possible? ... since i can't document your request while live support is open"
+  },
+  {
+    "bug": "System failure: Broken demo functionality",
+    "severity": "Critical",
+    "details": "The agent identifies itself as a medical scheduling tool but fails to perform the core task (booking) and the secondary task (transfer), leaving a patient with a potentially acute injury without any concrete assistance.",
+    "quote": "live transfer isn't available right now since this is a demo clinic."
+  }
+]

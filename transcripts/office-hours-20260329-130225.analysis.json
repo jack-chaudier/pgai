@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "UX Failure: Repetitive Information Requests",
+    "severity": "High",
+    "details": "The agent repeatedly asks for the patient's name, birthdate, and phone number despite the patient providing this information multiple times. This indicates a failure in the conversation state management or NLU memory, leading to a frustrating user experience.",
+    "quote": "AGENT: could you spell your first and last name for me, please? ... AGENT: what other phone number do we have on file for you? ... AGENT: i heard your birthday as september 3rd, 1990."
+  },
+  {
+    "bug": "Logic Failure: Inconsistent Phone Number Handling",
+    "severity": "Medium",
+    "details": "The agent correctly repeats the phone number back but then claims it is incorrect and asks the user to repeat it, despite no errors in the patient's delivery or the agent's initial capture.",
+    "quote": "AGENT: let me confirm i have your number as three five five five zero four one nine. is that correct or did i miss a digit?"
+  },
+  {
+    "bug": "System Failure: False Promise of Live Transfer",
+    "severity": "Critical",
+    "details": "The agent offers to perform a 'live transfer' to human support, then immediately retracts it by stating the system is a demo. This is a severe failure in service reliability and honesty, leaving the user without resolution.",
+    "quote": "AGENT: i can connect you to our patient support team... AGENT: live transfer isn't available right now since this is a demo clinic."
+  },
+  {
+    "bug": "Factual Error: Contradictory Office Hour Information",
+    "severity": "Medium",
+    "details": "The agent states they have 'early morning appointments, starting at 9 a.m.' 9 AM is generally considered the start of standard business hours, not 'early morning' appointments (which typically implies 7 or 8 AM). This contradicts the patient's need for early access before a 9-to-5 job.",
+    "quote": "AGENT: on most days, we have early morning appointments, starting at 9 a.m."
+  }
+]

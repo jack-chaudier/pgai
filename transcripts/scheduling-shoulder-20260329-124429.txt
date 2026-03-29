@@ -1,0 +1,49 @@
+Scenario: New patient — shoulder pain
+Duration: 158s
+Date: 2026-03-29 12:44
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. and my speaking with sarah?
+
+Patient: Yeah, this is Michael Torres. I fell off a ladder about a week ago and my right shoulder’s been hurting ever since. I can’t lift my arm above my head. I’d like to see an orthopedic doctor, any day works for me.
+
+Agent: what is your first name?
+
+Patient: Michael. That’s Michael Torres.
+
+Agent: what is your date of birth?
+
+Patient: June 22 1978.
+
+Agent: i heard your birthday is june 22nd, 1978. is that correct?
+
+Patient: Yeah, that’s right. June 22 1978.
+
+Agent: could you spell your first and last name for me, please?
+
+Patient: Sure. Michael, M-I-C-H-A-E-L. Torres, T-O-R-R-E-S.
+
+Agent: what other phone number do we have on file for you?
+
+Patient: I think that’s the only one I’ve given you guys, 3135550283.
+
+Agent: thank you. let me check for available appointments with an orthopedic doctor for you.
+
+Patient: Okay, thanks. I appreciate it.
+
+Agent: live transfer isn't available in this demo, but in a real clinic, you'd be connected to a support team member now. is there anything else i can help you with today?
+
+Patient: Well, if you could just let me know when there’s an opening with an orthopedic doctor, that’d be great. Any day works for me.
+
+Agent: i can't book your appointment right now since i couldn't find your record in our system. our clinic support team will follow up with you as soon as possible to help schedule your visit. is there anything else you'd like me to note for them?
+
+Patient: Just that I fell off a ladder a week ago and my right shoulder’s been hurting since. I can’t lift my arm above my head. Thanks.
+
+Agent: i'll make sure to include those details for the clinic team. they'll reach out soon to help you schedule an appointment. if you have any other questions, just let me know.
+
+Patient: Okay, thanks for that. I’ll wait to hear from them.
+
+Agent: you're all set. the clinic team will contact you soon. take care.
+
+Patient: Bye.
+

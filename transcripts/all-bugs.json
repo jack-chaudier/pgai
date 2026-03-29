@@ -1,0 +1,506 @@
+[
+  {
+    "file": "call-20260329-114915.json",
+    "bug": "Inappropriate disclosure of record mismatch",
+    "severity": "Medium",
+    "details": "The AI informs the user that their information does not match records and then proceeds to say it will accept it 'for demo purposes'. This is a security and professional-standards breach as it reveals internal system status and breaks the immersive experience of a medical receptionist.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "call-20260329-114915.json",
+    "bug": "System error during booking process",
+    "severity": "Critical",
+    "details": "The system encountered a technical failure ('issue booking the appointment due to a problem with the visit reason') that prevented the completion of the core task (booking an appointment).",
+    "quote": "it looks like there was an issue booking the appointment due to a problem with the visit reason."
+  },
+  {
+    "file": "call-20260329-114915.json",
+    "bug": "Failed handover to human support",
+    "severity": "Critical",
+    "details": "The AI attempted to transfer the call to a human representative to resolve the booking error, but instead connected the user to an automated test line that immediately hung up. This is a complete failure of the escalation process.",
+    "quote": "connecting you to a representative. please wait. [USER] hello, you've reached the pretty good ai test line. [USER] goodbye."
+  },
+  {
+    "file": "call-20260329-120058.json",
+    "bug": "Redundant data collection",
+    "severity": "Low",
+    "details": "The agent asked the patient for the reason for the visit after the patient had already provided that information earlier in the conversation. This results in a poor user experience and wasted time.",
+    "quote": "[USER] great. what would you like me to know as the reason for your visit?\n[USER] i have knee pain after a running injury."
+  },
+  {
+    "file": "call-20260329-120058.json",
+    "bug": "System error during booking",
+    "severity": "Critical",
+    "details": "The AI failed to process the booking due to a 'system issue' regarding the visit reason. This is a critical failure in the primary function of the agent, rendering the automated flow useless.",
+    "quote": "[USER] it looks like there was an issue booking the appointment due to a\n[USER] problem with the visit reason."
+  },
+  {
+    "file": "call-20260329-120058.json",
+    "bug": "Dead-end call routing (Hang up)",
+    "severity": "Critical",
+    "details": "After the automated booking failed, the agent promised to connect the patient to a live representative. Instead, it routed the call to a test line that immediately disconnected the user, leaving the patient's issue unresolved.",
+    "quote": "[USER] connecting you to a representative. please wait.\n[ASSISTANT] ok, thanks. \n[USER] hello, you've reached the pretty good ai test line.\n[USER] goodbye."
+  },
+  {
+    "file": "call-20260329-120812.json",
+    "bug": "Insecure identity verification process",
+    "severity": "High",
+    "details": "The AI identified a mismatch between the provided date of birth and the internal records, yet proceeded with the scheduling process regardless. This creates a data security and privacy risk by allowing a potential unauthorized user to book appointments or access patient records.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "call-20260329-120812.json",
+    "bug": "Booking failure due to internal processing error",
+    "severity": "Critical",
+    "details": "The system failed to finalize the booking after successfully capturing all necessary data (provider, time, and visit reason). Vague 'system issues' regarding the visit reason prevent the user from completing their task, leading to a breakdown in core functionality.",
+    "quote": "there was an issue booking your appointment due to a problem with the visit reason. let me try again and see if i can resolve it."
+  },
+  {
+    "file": "call-20260329-120812.json",
+    "bug": "Poor error handling and communication",
+    "severity": "Medium",
+    "details": "When the booking failed, the AI's initial communication was cut off or mumbled, forcing the patient to ask for a repeat. This demonstrates a failure in the speech-to-text or voice-synthesis feedback loop, causing unnecessary user frustration.",
+    "quote": "it looks like there were [ASSISTANT] Sorry, I didn't catch that. Could you repeat what you said?"
+  },
+  {
+    "file": "call-20260329-121553.json",
+    "bug": "Insecure verification process",
+    "severity": "High",
+    "details": "The AI admits the provided date of birth does not match the records but proceeds with the call anyway. This violates HIPAA compliance and basic security protocols for a medical office.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "call-20260329-121553.json",
+    "bug": "System error during booking process",
+    "severity": "Critical",
+    "details": "The AI encounters an unrecoverable system error when processing the 'visit reason' field, preventing the appointment from being booked successfully.",
+    "quote": "it looks like there's an issue with the visit reason format. let me try booking your appointment again. one moment while i fix that."
+  },
+  {
+    "file": "call-20260329-121553.json",
+    "bug": "UX failure: Dead-end transfer",
+    "severity": "Critical",
+    "details": "After failing to book the appointment, the AI attempts to transfer the patient to a human, but the transfer is routed to an automated message that says 'goodbye' and hangs up, leaving the patient without assistance.",
+    "quote": "connecting you to a representative. please wait. hello. you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "call-20260329-121553.json",
+    "bug": "Logic failure: Improper appointment classification",
+    "severity": "Medium",
+    "details": "The patient is a returning patient needing a follow-up for knee pain, but the AI offers slots specifically labeled for a 'new patient consultation.'",
+    "quote": "dr. bricker has openings for a new patient consultation on monday, march 30th at 9.45 a.m. and 10.30 a.m."
+  },
+  {
+    "file": "cancel-20260329-125437.json",
+    "bug": "Redundant data collection",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for information (Name, DOB) that the patient has already provided, creating a frustrating UX loop that ignores the patient's previous input.",
+    "quote": "[PATIENT] It's Michael Torres, June 22 1978. I told you that already."
+  },
+  {
+    "file": "cancel-20260329-125437.json",
+    "bug": "Inefficient data collection flow",
+    "severity": "Low",
+    "details": "The agent asks for name, DOB, and phone number in separate, disjointed requests rather than verifying existing information, causing the patient to express agitation.",
+    "quote": "[AGENT] can you please provide the spelling of your first and last name? ... [AGENT] please provide your phone number."
+  },
+  {
+    "file": "cancel-20260329-125437.json",
+    "bug": "Failure to access or utilize CRM/EHR data",
+    "severity": "Critical",
+    "details": "The AI is unable to locate the patient's record despite the patient providing accurate identifying information. This is a primary function failure for a receptionist.",
+    "quote": "[AGENT] i can't complete the cancellation right now because i'm unable to find your record in the system."
+  },
+  {
+    "file": "cancel-20260329-125437.json",
+    "bug": "Inability to perform primary task and escalation failure",
+    "severity": "High",
+    "details": "The agent fails to complete the core task (cancellation) and cannot offer a live transfer (as it is unavailable), leaving the patient in a 'dead end' state without a confirmed resolution.",
+    "quote": "normally i would transfer you to a live support agent, but that option isn't available at the moment."
+  },
+  {
+    "file": "cancel-20260329-125437.json",
+    "bug": "Lack of knowledge base integration",
+    "severity": "Medium",
+    "details": "The AI fails to provide the basic information requested regarding clinic policy, forcing the patient to wait for a callback. A receptionist should be able to state the standard office policy.",
+    "quote": "[AGENT] i don't have access to the specific cancellation policy details for pivot point orthopedics."
+  },
+  {
+    "file": "edge-frustrated-20260329-133649.json",
+    "bug": "Redundant data collection flow",
+    "severity": "Medium",
+    "details": "The AI ignores information provided earlier in the conversation (name and DOB), forcing the user to repeat themselves multiple times. This leads to user frustration and a poor UX experience.",
+    "quote": "AGENT: may i have your first name, last name, and date of birth? ... AGENT: can you please provide the spelling of your first and last name?"
+  },
+  {
+    "file": "edge-frustrated-20260329-133649.json",
+    "bug": "Logic failure: Verification loop",
+    "severity": "High",
+    "details": "The AI asks the user to confirm their date of birth immediately after the user provided it, but the bot acts as if it hasn't processed the input. This is a failure in state management.",
+    "quote": "AGENT: to assist you, i need to confirm your date of birth. is your date of birth correct as previously provided?"
+  },
+  {
+    "file": "edge-frustrated-20260329-133649.json",
+    "bug": "Failure to address primary goal",
+    "severity": "Critical",
+    "details": "The patient explicitly requests to schedule an appointment throughout the call. The AI continues to ask for demographic details, acknowledges the user's frustration, but then fails to perform the requested scheduling task or offer a concrete booking path, essentially dead-ending the conversation.",
+    "quote": "PATIENT: Can we just go ahead and get an appointment set up now? ... AGENT: right now, i can't transfer you to a live agent because this is a demo clinic."
+  },
+  {
+    "file": "edge-multiple-20260329-133036.json",
+    "bug": "UX/Data redundancy: Ignoring provided information",
+    "severity": "High",
+    "details": "The agent repeatedly asks for information (first name, date of birth) that the patient has already provided. This creates a frustrating, circular loop that degrades the user experience.",
+    "quote": "[AGENT] please provide your first name. [PATIENT] It's Michael, like I just said."
+  },
+  {
+    "file": "edge-multiple-20260329-133036.json",
+    "bug": "System Logic: Failure to answer basic scope-of-service questions",
+    "severity": "Medium",
+    "details": "The agent initially claims it cannot answer questions about appointment requirements or costs, then later provides a general answer. It should have provided the general guidance immediately rather than stonewalling the user.",
+    "quote": "[AGENT] i am unable to answer questions related to referrals. appointment requirements, or costs."
+  },
+  {
+    "file": "edge-multiple-20260329-133036.json",
+    "bug": "System Error: Inability to execute core function (scheduling/follow-up)",
+    "severity": "Critical",
+    "details": "The agent invites the user to 'give it a try' to solve their issues, only to conclude the call by stating it cannot perform the requested action (creating a follow-up) due to a technical issue. This is a failure of the agent's primary purpose.",
+    "quote": "[AGENT] i'm unable to create a follow-up record right now. due to a technical issue and live transfer isn't available in this demo."
+  },
+  {
+    "file": "edge-multiple-20260329-133036.json",
+    "bug": "System Error: Partial utterance/incomplete processing",
+    "severity": "Low",
+    "details": "The agent triggers an incomplete sentence ('could you') which forces the user to ask for clarification, interrupting the flow of the conversation.",
+    "quote": "[AGENT] could you\n[PATIENT] Sorry, could you what?"
+  },
+  {
+    "file": "edge-urgent-20260329-131804.json",
+    "bug": "Factual error/Identity confusion",
+    "severity": "Medium",
+    "details": "The AI greeted the patient as 'Sarah' despite the patient immediately clarifying their name is Michael Torres. The AI failed to update its context, creating confusion and frustration.",
+    "quote": "am i speaking with sarah? [PATIENT] Yeah, this is Michael Torres."
+  },
+  {
+    "file": "edge-urgent-20260329-131804.json",
+    "bug": "UX failure: Repetitive information gathering",
+    "severity": "Medium",
+    "details": "The AI asked for the patient's name, DOB, and spelling despite the patient having already provided this information. This creates a poor user experience, especially for someone in pain.",
+    "quote": "i can help you schedule an appointment. to proceed, may i have your first name? ... can you please spell your first and last name for me?"
+  },
+  {
+    "file": "edge-urgent-20260329-131804.json",
+    "bug": "Logic/Workflow failure: Failure to document urgent request",
+    "severity": "High",
+    "details": "The AI claimed it could not document the patient's request because 'live support is open' and then contradicted its own offer to document the request. It essentially abandoned the patient's request for help without performing any actionable system task.",
+    "quote": "would you like me to document your request for the clinic to call you back as soon as possible? ... since i can't document your request while live support is open"
+  },
+  {
+    "file": "edge-urgent-20260329-131804.json",
+    "bug": "System failure: Broken demo functionality",
+    "severity": "Critical",
+    "details": "The agent identifies itself as a medical scheduling tool but fails to perform the core task (booking) and the secondary task (transfer), leaving a patient with a potentially acute injury without any concrete assistance.",
+    "quote": "live transfer isn't available right now since this is a demo clinic."
+  },
+  {
+    "file": "edge-vague-20260329-132543.json",
+    "bug": "System crash/Hang-up error during handoff",
+    "severity": "Critical",
+    "details": "The AI failed to successfully hand off the call to a human representative, instead hitting an automated test line message that disconnected the patient. This leaves the patient without a booked appointment and causes a poor customer experience.",
+    "quote": "connecting you to a representative. please wait. hello, you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "edge-vague-20260329-132543.json",
+    "bug": "System error on visit reason",
+    "severity": "High",
+    "details": "The booking process failed multiple times citing a 'system issue with the visit reason'. This suggests the AI's internal categorization for the appointment type ('new patient consultation for back pain') is incompatible with the booking system backend.",
+    "quote": "i'm having trouble confirming your appointment due to a system issue with the visit reason."
+  },
+  {
+    "file": "edge-visit-reason-simple-20260329-133413.json",
+    "bug": "Inappropriate disclosure of system limitations",
+    "severity": "Low",
+    "details": "The agent explicitly stated, 'the birthday doesn't match our records, but for demo purposes, i'll accept it.' This breaks the fourth wall, is unprofessional, and suggests a lack of robust security/verification protocols.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "edge-visit-reason-simple-20260329-133413.json",
+    "bug": "Looping/Redundant questioning",
+    "severity": "Medium",
+    "details": "After the patient stated their intent to book a consultation, the agent failed to acknowledge the context and simply asked 'how can i help?', forcing the patient to repeat their request for a checkup.",
+    "quote": "[PATIENT] Oh, okay, got it. So can we go ahead and schedule the consultation?\n[AGENT] how can i help?"
+  },
+  {
+    "file": "edge-visit-reason-simple-20260329-133413.json",
+    "bug": "Vague conversational output",
+    "severity": "Low",
+    "details": "The agent said 'we have opening' without providing any actual information, which is grammatically incorrect and unhelpful, forcing the patient to prompt for details.",
+    "quote": "[AGENT] we have opening."
+  },
+  {
+    "file": "edge-visit-reason-simple-20260329-133413.json",
+    "bug": "Booking logic failure (Validation error)",
+    "severity": "High",
+    "details": "The system failed to book the appointment because it rejected 'general checkup' as a visit reason, despite the agent explicitly accepting it moments prior. This is a logic failure in the integration between the conversational interface and the booking database.",
+    "quote": "i'm having trouble booking your appointment because the system isn't accepting general checkup as a reason."
+  },
+  {
+    "file": "edge-visit-reason-simple-20260329-133413.json",
+    "bug": "Failed handover/Termination of call",
+    "severity": "Critical",
+    "details": "The agent promised to transfer the patient to a clinic support representative to resolve the booking error, but instead connected the patient to a test line that immediately hung up ('goodbye'). The patient was abandoned rather than transferred to a human.",
+    "quote": "i'll connect you to our clinic support team so they can help finish scheduling your appointment... hello. you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "edge-weekend-20260329-131416.json",
+    "bug": "System error during appointment booking process",
+    "severity": "Critical",
+    "details": "The AI agent failed to finalize a booking that it previously confirmed was available. It repeatedly failed due to a 'visit reason' error, forcing the patient to wait while it unsuccessfully attempted to resolve a system-side technical failure, eventually necessitating a human transfer.",
+    "quote": "and it looks like there was an issue with the visit reason for booking. let me try again with a shorter visit reason and get you scheduled."
+  },
+  {
+    "file": "edge-weekend-20260329-131416.json",
+    "bug": "Redundant data collection / Ignoring patient context",
+    "severity": "Medium",
+    "details": "The agent acknowledged the patient's search constraints ('before 8 a.m. on weekdays') but then offered slots at 9:45 a.m., 10:30 a.m., and 9 a.m. This ignored the patient's explicit instruction that they work during the week and cannot take time off.",
+    "quote": "the earliest new patient consultation i found is monday at 9.45 a.m. with dr. bricker. the next options are monday at 10.30 a.m. or tuesday at 9 a.m."
+  },
+  {
+    "file": "edge-wrong-specialty-20260329-132130.json",
+    "bug": "Redundant data collection (UX failure)",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for the patient's name and date of birth despite the patient having provided this information earlier in the conversation. This causes user frustration and inefficient flow.",
+    "quote": "AGENT: may i have your first name, last name, and date of birth?"
+  },
+  {
+    "file": "edge-wrong-specialty-20260329-132130.json",
+    "bug": "System error / Glitch",
+    "severity": "High",
+    "details": "The agent experiences a verbal glitch ('life tra') while attempting a live transfer, which is nonsensical and confusing to the patient.",
+    "quote": "AGENT: life tra"
+  },
+  {
+    "file": "edge-wrong-specialty-20260329-132130.json",
+    "bug": "False promise of functionality (System error)",
+    "severity": "Critical",
+    "details": "The agent initiates a live transfer process but then immediately defaults to a 'demo mode' error message, stating the transfer is unavailable. A production AI should either have the integration active or inform the user immediately that a transfer is not possible before attempting it.",
+    "quote": "AGENT: i'm not finding your record in our system. i'll connect you to our patient support team... AGENT: this is a demo clinic. so live transfer isn't available right now."
+  },
+  {
+    "file": "edge-wrong-specialty-20260329-132130.json",
+    "bug": "Failure to triage medical urgency",
+    "severity": "High",
+    "details": "The patient reports a skin rash that is 'getting worse.' The agent attempts to book an appointment without performing any basic triage or safety screening to determine if the rash requires emergency care, only addressing the specialty mismatch after the booking attempt fails.",
+    "quote": "PATIENT: I\u2019m calling because I\u2019ve got this skin rash on my arm that\u2019s been getting worse... AGENT: thanks for letting me know, lisa. i'll help you get scheduled."
+  },
+  {
+    "file": "followup-surgery-20260329-124743.json",
+    "bug": "Inappropriate disclosure of system test status",
+    "severity": "Medium",
+    "details": "The agent explicitly tells the patient the data mismatch is being ignored 'for demo purposes'. This breaks the illusion of a professional medical environment and reveals sensitive system testing logic to the user.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "followup-surgery-20260329-124743.json",
+    "bug": "Redundant information gathering",
+    "severity": "Low",
+    "details": "The patient stated their intent (follow-up for knee surgery) in the first turn. After verifying the DOB, the agent asks 'how can i help you today?' as if the patient hadn't already provided the exact reason for the call.",
+    "quote": "how can i help you today?"
+  },
+  {
+    "file": "followup-surgery-20260329-124743.json",
+    "bug": "Booking system failure",
+    "severity": "Critical",
+    "details": "The agent experiences a persistent 'system error' regarding the visit reason. The AI fails to self-correct, resulting in an inability to complete the primary task (booking the appointment).",
+    "quote": "i'm having trouble booking the appointment due to a system error with the visit reason."
+  },
+  {
+    "file": "followup-surgery-20260329-124743.json",
+    "bug": "Call termination error during transfer",
+    "severity": "Critical",
+    "details": "The agent promises to connect the patient to a live representative to resolve the booking error. Instead of completing the transfer, the system routes the patient to a dead-end test line message that immediately hangs up on the user.",
+    "quote": "connecting you to a representative, please wait. hello, you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "insurance-20260329-130656.json",
+    "bug": "Redundant data collection / Poor memory",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for the patient's name, DOB, and phone number despite the patient having clearly provided them earlier in the conversation. This indicates a failure in state management or context retention, leading to a frustrating user experience.",
+    "quote": "I already gave you that. It's Lisa Park, September 3 1990."
+  },
+  {
+    "file": "insurance-20260329-130656.json",
+    "bug": "Speech-to-text / Data validation error",
+    "severity": "Medium",
+    "details": "The agent failed to identify the number the patient was calling from, forcing the patient to repeat it multiple times. Furthermore, the agent misheard the number significantly (313-555-0419 vs 313-513-7316), which could lead to missed follow-ups in a real-world scenario.",
+    "quote": "you're calling from three one three five one three seven three one six is that the best number for follow up?"
+  },
+  {
+    "file": "insurance-20260329-130656.json",
+    "bug": "Confusing transition from demo mode to service",
+    "severity": "High",
+    "details": "The agent informed the user that they would have the team follow up, but then immediately broke character to explain that a live transfer wasn't available because it is a 'demo clinic'. This undermines the AI's professional persona and leaves the user uncertain if their request was actually logged.",
+    "quote": "live transfer isn't available right now since this is a demo clinic, but in a real call i would have connected you to a team member"
+  },
+  {
+    "file": "location-20260329-130857.json",
+    "bug": "Incomplete information retrieval",
+    "severity": "Medium",
+    "details": "The AI is unable to provide basic office details (floor number and parking information) that are standard for a medical office receptionist. Requiring a patient on crutches to call back for simple logistical information creates poor UX and unnecessary friction.",
+    "quote": "i don't have information about the floor number or specific accessible parking spots. for those details, please call the clinic directly."
+  },
+  {
+    "file": "location-20260329-130857.json",
+    "bug": "Identity verification failure",
+    "severity": "Low",
+    "details": "The AI assumes the caller is 'Sarah' without initial verification. While the patient corrects the AI, the system should ideally verify identity or ask who is calling before assuming a name.",
+    "quote": "thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+  },
+  {
+    "file": "medication-refill-20260329-125751.json",
+    "bug": "Insecure identity verification process",
+    "severity": "Critical",
+    "details": "The AI admits the patient's DOB does not match records but overrides this security protocol for 'demo purposes'. This is a major HIPAA/privacy violation that allows an unverified person to access medical records or refill requests.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "medication-refill-20260329-125751.json",
+    "bug": "Redundant data collection",
+    "severity": "Low",
+    "details": "The agent asks the patient to repeat the medication name and dosage despite the patient providing this information clearly in the opening turn.",
+    "quote": "[PATIENT] I ran out of the ibuprofen 800mg... [AGENT] what medication do you need refilled?"
+  },
+  {
+    "file": "medication-refill-20260329-125751.json",
+    "bug": "System failure during critical transaction",
+    "severity": "Critical",
+    "details": "The agent repeatedly fails to process a refill request due to a technical error and provides no resolution, ultimately abandoning the call.",
+    "quote": "there was a technical issue creating your refill request. let me try one more time to make sure your request is sent to the clinic."
+  },
+  {
+    "file": "medication-refill-20260329-125751.json",
+    "bug": "Unexpected call termination",
+    "severity": "Critical",
+    "details": "After failing to process the refill, the agent attempts to transfer the patient to a representative, but instead triggers a recorded 'goodbye' message and drops the call, leaving the patient's medical need unresolved.",
+    "quote": "connecting you to a representative. please wait. hello, you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "office-hours-20260329-130225.json",
+    "bug": "UX Failure: Repetitive Information Requests",
+    "severity": "High",
+    "details": "The agent repeatedly asks for the patient's name, birthdate, and phone number despite the patient providing this information multiple times. This indicates a failure in the conversation state management or NLU memory, leading to a frustrating user experience.",
+    "quote": "AGENT: could you spell your first and last name for me, please? ... AGENT: what other phone number do we have on file for you? ... AGENT: i heard your birthday as september 3rd, 1990."
+  },
+  {
+    "file": "office-hours-20260329-130225.json",
+    "bug": "Logic Failure: Inconsistent Phone Number Handling",
+    "severity": "Medium",
+    "details": "The agent correctly repeats the phone number back but then claims it is incorrect and asks the user to repeat it, despite no errors in the patient's delivery or the agent's initial capture.",
+    "quote": "AGENT: let me confirm i have your number as three five five five zero four one nine. is that correct or did i miss a digit?"
+  },
+  {
+    "file": "office-hours-20260329-130225.json",
+    "bug": "System Failure: False Promise of Live Transfer",
+    "severity": "Critical",
+    "details": "The agent offers to perform a 'live transfer' to human support, then immediately retracts it by stating the system is a demo. This is a severe failure in service reliability and honesty, leaving the user without resolution.",
+    "quote": "AGENT: i can connect you to our patient support team... AGENT: live transfer isn't available right now since this is a demo clinic."
+  },
+  {
+    "file": "office-hours-20260329-130225.json",
+    "bug": "Factual Error: Contradictory Office Hour Information",
+    "severity": "Medium",
+    "details": "The agent states they have 'early morning appointments, starting at 9 a.m.' 9 AM is generally considered the start of standard business hours, not 'early morning' appointments (which typically implies 7 or 8 AM). This contradicts the patient's need for early access before a 9-to-5 job.",
+    "quote": "AGENT: on most days, we have early morning appointments, starting at 9 a.m."
+  },
+  {
+    "file": "reschedule-20260329-125154.json",
+    "bug": "Inappropriate disclosure of system testing state",
+    "severity": "Medium",
+    "details": "The AI explicitly tells the user that the data verification failed but that it will ignore the error for 'demo purposes.' This breaks the immersion of a professional medical office environment and reveals system instability to the patient.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "reschedule-20260329-125154.json",
+    "bug": "System booking failure",
+    "severity": "Critical",
+    "details": "The AI reaches a dead end in the booking process, unable to finalize a valid appointment, forcing the user to give up after several failed attempts.",
+    "quote": "there was an issue booking your appointment. let me try again... i'm having trouble."
+  },
+  {
+    "file": "reschedule-20260329-125154.json",
+    "bug": "UX/System failure on escalation",
+    "severity": "Critical",
+    "details": "When the AI fails to complete the task and attempts to escalate to a human representative, it instead routes the user to a generic test line which immediately terminates the call. This is a complete failure of the customer support experience.",
+    "quote": "can i connect you to a representative? please wait. hello, you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "file": "scheduling-knee-20260329-124127.json",
+    "bug": "Inappropriate disclosure of system testing/QA state",
+    "severity": "High",
+    "details": "The AI receptionist broke character and exposed internal system mechanics ('for demo purposes') to the patient. This damages professional credibility and trust. The agent should have either verified the patient through secondary means (like a phone number or full name) or handled the discrepancy as an 'unable to verify' error rather than admitting the system is a demo.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "scheduling-knee-20260329-124127.json",
+    "bug": "Poor error handling for identity verification",
+    "severity": "Medium",
+    "details": "When a DOB fails to match, the agent bypasses security protocols entirely because it is a 'demo.' A production-ready AI should never accept unverified data; it should prompt the patient to verify their information again or transfer the call to a human receptionist to ensure patient data privacy and prevent record corruption.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-123604.json",
+    "bug": "Redundant data collection",
+    "severity": "Low",
+    "details": "The agent repeatedly asks for information (name, DOB) that the patient has already provided, indicating a lack of conversational state management.",
+    "quote": "I already gave you that it's Michael Torres, June 22 1978."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-123604.json",
+    "bug": "Failure to address patient injury severity",
+    "severity": "Critical",
+    "details": "The patient reports a fall from a ladder with significant functional impairment (unable to lift arm). The agent fails to perform a medical triage or prioritize the patient, proceeding only with administrative record-matching.",
+    "quote": "I fell off a ladder about a week ago and it's been hurting ever since. I can't lift my arm above my head."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-123604.json",
+    "bug": "Broken transfer logic/context loss",
+    "severity": "High",
+    "details": "The agent claims it is initiating a 'live transfer' to a support team member, but the interaction does not effectively hand over context. The agent then inserts itself into the conversation with the human support staffer, resulting in a confusing experience where the agent says 'you're welcome' to the support staffer instead of facilitating the handoff.",
+    "quote": "AGENT: live transfer. PATIENT: Hello, this is Jessica from patient support... AGENT: you're welcome."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-123604.json",
+    "bug": "Delayed safety warning",
+    "severity": "Medium",
+    "details": "The agent provides the mandatory safety disclaimer regarding emergency symptoms only at the very end of the call, rather than at the start or during the initial intake when the patient described a traumatic fall.",
+    "quote": "if you have any urgent symptoms, please call 911 or visit the nearest urgent care."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-124429.json",
+    "bug": "UX Failure: Repetitive information collection",
+    "severity": "Medium",
+    "details": "The agent asked the patient to spell their name despite the patient having already clearly stated their name as 'Michael Torres' at the beginning of the call. This creates a redundant and inefficient user experience.",
+    "quote": "AGENT: could you spell your first and last name for me, please?"
+  },
+  {
+    "file": "scheduling-shoulder-20260329-124429.json",
+    "bug": "Safety issue: Failure to triage or assess injury severity",
+    "severity": "Critical",
+    "details": "The patient reported a traumatic injury (falling off a ladder) with functional impairment (unable to lift arm). The AI agent failed to include any safety screening questions, red-flag checks, or advice on seeking urgent care if symptoms worsen, which is a major liability and clinical safety failure.",
+    "quote": "PATIENT: I fell off a ladder about a week ago and my right shoulder\u2019s been hurting since. I can\u2019t lift my arm above my head."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-124429.json",
+    "bug": "Logic failure: Ignoring patient's provided context for booking",
+    "severity": "High",
+    "details": "The patient provided their full name, DOB, and phone number, but the agent claimed they could not find the record and subsequently failed to offer any appointment availability, despite the patient expressing flexibility ('any day works for me'). The system essentially ignored the intake data collected.",
+    "quote": "AGENT: i can't book your appointment right now since i couldn't find your record in our system."
+  },
+  {
+    "file": "scheduling-shoulder-20260329-124429.json",
+    "bug": "UX/Workflow failure: Failure to capture clinical details during intake",
+    "severity": "High",
+    "details": "The agent did not document the patient's symptoms during the initial intake phase, forcing the patient to repeat their medical history twice. The agent should have logged the ladder fall and shoulder injury while attempting to look up the record.",
+    "quote": "PATIENT: Just that I fell off a ladder a week ago and my right shoulder\u2019s been hurting since. I can\u2019t lift my arm above my head. Thanks."
+  }
+]

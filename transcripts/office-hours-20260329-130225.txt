@@ -1,0 +1,53 @@
+Scenario: Office hours and weekend availability
+Duration: 256s
+Date: 2026-03-29 13:02
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. my speaking with sarah?
+
+Patient: Yeah, this is Lisa Park. I was wondering about your office hours? I work a regular nine-to-five, so I can only come in early in the morning or on weekends. Are you open on Saturdays or Sundays?
+
+Agent: we're open monday through friday. but not on saturdays or sundays. on most days, we have early morning appointments, starting at 9 a.m., and on wednesdays, we open at noon. would you like to hear about early morning availability during the week?
+
+Patient: Oh okay, so no weekends then? Yeah, could you let me know about those early morning slots during the week? Like, what's available on Monday, Tuesday, or Thursday?
+
+Agent: may i have your first name, last name, and date of birth?
+
+Patient: It's Lisa Park, September 3 1990.
+
+Agent: i heard your birthday is september 3rd, 1990. is that correct?
+
+Patient: Yeah, that's right.
+
+Agent: could you spell your first and last name for me, please?
+
+Patient: Sure, it's L-I-S-A P-A-R-K.
+
+Agent: what other phone number do we have on file for you?
+
+Patient: It's just the one, 3135550419. That's the only number I use.
+
+Agent: let me confirm i have your number as three five five five zero four one nine. is that correct or did i miss a digit? could you repeat the full number for me?
+
+Patient: Yeah, it's 3135550419. That's correct. I already gave you that. It's Lisa Park, September 3 1990.
+
+Agent: i heard your birthday as september 3rd, 1990.
+
+Patient: Yes, that's correct. I already mentioned it earlier. I already did. It's L-I-S-A P-A-R-K. I only have the one number, 3135550419. I told you that already.
+
+Agent: i'm having trouble pulling up your record in our system. i can connect you to our patient support team to help with your scheduling request. would you like me to transfer you now?
+
+Patient: Yeah, okay, I guess so. Go ahead and transfer me.
+
+Agent: live transfer isn't available right now since this is a demo clinic. in a real situation, i would have connected you to a human for support. if you'd like, we can keep going and i'll do my best to help with your scheduling questions. would you like to continue?
+
+Patient: Yeah, let's keep going then. I still need to know about those early morning appointments on weekdays.
+
+Agent: thanks for your patience. since i can't find your record in our system, i'm unable to check specific appointment slots. i'll make sure our clinic support team follows up with you about early morning availability. is there anything else you'd like help with today?
+
+Patient: Well, I guess that's it then. Just let me know when they get back to me about those early slots. Thanks.
+
+Agent: i'll document your request for early morning weekday appointments and our clinic support team will get back to you as soon as they can. have a great day.
+
+Patient: Okay, thanks. Bye.
+

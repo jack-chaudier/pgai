@@ -1,0 +1,40 @@
+{
+  "scenario_id": "location",
+  "scenario_name": "Office location and parking",
+  "timestamp": "2026-03-29T13:08:57.053365",
+  "duration_seconds": 99.0,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "No, this is Michael. I'm not Sarah. I was calling to get the office address, what floor you're on, and if there's parking. I'll be coming in on crutches, so I need to know about accessible parking too."
+    },
+    {
+      "role": "AGENT",
+      "content": "the clinic address is pivot point orthopedics, 220 athens way, nashville. i'll have details about parking or floor location, but the main entrance should be accessible. for specific parking or accessibility info, i recommend calling the clinic directly. is there anything else i can help with?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, thanks. So 220 Athens Way in Nashville, right? And the main entrance is accessible. Do you happen to know which floor I need to go to? And maybe if there's any note about accessible parking spots?"
+    },
+    {
+      "role": "AGENT",
+      "content": "that's right. the address is 220 athens way, nashville. i don't have information about the floor number or specific accessible parking spots. for those details, please call the clinic directly. they can give you the most accurate info. let me know if you need anything else."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Got it, thanks. I\u2019ll call the clinic directly for the floor number and accessible parking details. That\u2019s all I needed. Thanks for your help."
+    },
+    {
+      "role": "AGENT",
+      "content": "you're welcome. if you have any other questions, feel free to call back. have a great day!"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Bye. Thanks again."
+    }
+  ]
+}

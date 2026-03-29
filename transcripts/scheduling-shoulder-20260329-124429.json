@@ -1,0 +1,96 @@
+{
+  "scenario_id": "scheduling-shoulder",
+  "scenario_name": "New patient \u2014 shoulder pain",
+  "timestamp": "2026-03-29T12:44:29.354205",
+  "duration_seconds": 158.3,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. and my speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, this is Michael Torres. I fell off a ladder about a week ago and my right shoulder\u2019s been hurting ever since. I can\u2019t lift my arm above my head. I\u2019d like to see an orthopedic doctor, any day works for me."
+    },
+    {
+      "role": "AGENT",
+      "content": "what is your first name?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Michael. That\u2019s Michael Torres."
+    },
+    {
+      "role": "AGENT",
+      "content": "what is your date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "June 22 1978."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday is june 22nd, 1978. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that\u2019s right. June 22 1978."
+    },
+    {
+      "role": "AGENT",
+      "content": "could you spell your first and last name for me, please?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sure. Michael, M-I-C-H-A-E-L. Torres, T-O-R-R-E-S."
+    },
+    {
+      "role": "AGENT",
+      "content": "what other phone number do we have on file for you?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "I think that\u2019s the only one I\u2019ve given you guys, 3135550283."
+    },
+    {
+      "role": "AGENT",
+      "content": "thank you. let me check for available appointments with an orthopedic doctor for you."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, thanks. I appreciate it."
+    },
+    {
+      "role": "AGENT",
+      "content": "live transfer isn't available in this demo, but in a real clinic, you'd be connected to a support team member now. is there anything else i can help you with today?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Well, if you could just let me know when there\u2019s an opening with an orthopedic doctor, that\u2019d be great. Any day works for me."
+    },
+    {
+      "role": "AGENT",
+      "content": "i can't book your appointment right now since i couldn't find your record in our system. our clinic support team will follow up with you as soon as possible to help schedule your visit. is there anything else you'd like me to note for them?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Just that I fell off a ladder a week ago and my right shoulder\u2019s been hurting since. I can\u2019t lift my arm above my head. Thanks."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'll make sure to include those details for the clinic team. they'll reach out soon to help you schedule an appointment. if you have any other questions, just let me know."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, thanks for that. I\u2019ll wait to hear from them."
+    },
+    {
+      "role": "AGENT",
+      "content": "you're all set. the clinic team will contact you soon. take care."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Bye."
+    }
+  ]
+}

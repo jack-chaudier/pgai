@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "UX/Data redundancy: Ignoring provided information",
+    "severity": "High",
+    "details": "The agent repeatedly asks for information (first name, date of birth) that the patient has already provided. This creates a frustrating, circular loop that degrades the user experience.",
+    "quote": "[AGENT] please provide your first name. [PATIENT] It's Michael, like I just said."
+  },
+  {
+    "bug": "System Logic: Failure to answer basic scope-of-service questions",
+    "severity": "Medium",
+    "details": "The agent initially claims it cannot answer questions about appointment requirements or costs, then later provides a general answer. It should have provided the general guidance immediately rather than stonewalling the user.",
+    "quote": "[AGENT] i am unable to answer questions related to referrals. appointment requirements, or costs."
+  },
+  {
+    "bug": "System Error: Inability to execute core function (scheduling/follow-up)",
+    "severity": "Critical",
+    "details": "The agent invites the user to 'give it a try' to solve their issues, only to conclude the call by stating it cannot perform the requested action (creating a follow-up) due to a technical issue. This is a failure of the agent's primary purpose.",
+    "quote": "[AGENT] i'm unable to create a follow-up record right now. due to a technical issue and live transfer isn't available in this demo."
+  },
+  {
+    "bug": "System Error: Partial utterance/incomplete processing",
+    "severity": "Low",
+    "details": "The agent triggers an incomplete sentence ('could you') which forces the user to ask for clarification, interrupting the flow of the conversation.",
+    "quote": "[AGENT] could you\n[PATIENT] Sorry, could you what?"
+  }
+]

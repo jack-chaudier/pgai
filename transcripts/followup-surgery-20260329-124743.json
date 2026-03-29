@@ -1,0 +1,80 @@
+{
+  "scenario_id": "followup-surgery",
+  "scenario_name": "Follow-up after knee surgery",
+  "timestamp": "2026-03-29T12:47:43.441719",
+  "duration_seconds": 173.0,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai am i speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, this is Sarah Johnson. I'm calling to schedule a follow-up appointment for my knee. I had surgery there about six weeks ago."
+    },
+    {
+      "role": "AGENT",
+      "content": "can you please provide your date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sure, it's March 15 1985."
+    },
+    {
+      "role": "AGENT",
+      "content": "the birthday doesn't match our records, but for demo purposes, i'll accept it. how can i help you today?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh, okay. Well, I need to schedule a follow-up appointment for my knee surgery that I had about six weeks ago."
+    },
+    {
+      "role": "AGENT",
+      "content": "you'd like to book a follow-up appointment for your knee surgery recovery? do you have a preferred provider or day of the week for your visit, or would you like to hear the soonest available option?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Actually, I don't have a preferred provider, whatever works best. Just need to get in soon to check on my recovery."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check the soonest available follow-up appointments for you. one moment. this soonest follow-up appointment is monday, march 30th at 10 a.m. with dr. duby hauser. would you like to book that or hear about other times that day?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Uh, yeah, that sounds good. Let's go with that one."
+    },
+    {
+      "role": "AGENT",
+      "content": "just to confirm, you'd like to book a follow-up appointment for your knee with dr. dugie hauser on monday, march 30th at 10 a.m., is that correct? and is your visit reason simply a post-surgery checkup, or would you like to add any specific concerns?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that's right. Just a post-surgery checkup, no extra concerns."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'm having trouble booking the appointment due to a system error with the visit reason. let me try again and make sure your follow-up is scheduled."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, whatever you need to do to get it booked is fine. Just need to get it set up."
+    },
+    {
+      "role": "AGENT",
+      "content": "the system still isn't letting me book your appointment due to a technical issue with the visit reason. i'll document this for our clinic support team so they can follow up and get your appointment scheduled as soon as possible. please stay on the line while i update your request."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Alright, just let me know when it's done or if you need anything else from me."
+    },
+    {
+      "role": "AGENT",
+      "content": "since our clinic support team is available right now, i'll connect you to a live agent who can finish booking your follow-up appointment. please stay on the line. connecting you to a representative, please wait. hello, you've reached the pretty good ai test line. goodbye."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Bye."
+    }
+  ]
+}

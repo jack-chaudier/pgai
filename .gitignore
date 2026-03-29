@@ -29,9 +29,11 @@ env/
 
 # Testing/runtime artifacts
 *.log
-*.wav
 *.mp3
 *.ogg
+
+# Audio recordings (large, not needed in git — transcripts cover the content)
+transcripts/*.wav
 
 
 # uv

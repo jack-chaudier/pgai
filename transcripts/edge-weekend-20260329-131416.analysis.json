@@ -1,0 +1,14 @@
+[
+  {
+    "bug": "System error during appointment booking process",
+    "severity": "Critical",
+    "details": "The AI agent failed to finalize a booking that it previously confirmed was available. It repeatedly failed due to a 'visit reason' error, forcing the patient to wait while it unsuccessfully attempted to resolve a system-side technical failure, eventually necessitating a human transfer.",
+    "quote": "and it looks like there was an issue with the visit reason for booking. let me try again with a shorter visit reason and get you scheduled."
+  },
+  {
+    "bug": "Redundant data collection / Ignoring patient context",
+    "severity": "Medium",
+    "details": "The agent acknowledged the patient's search constraints ('before 8 a.m. on weekdays') but then offered slots at 9:45 a.m., 10:30 a.m., and 9 a.m. This ignored the patient's explicit instruction that they work during the week and cannot take time off.",
+    "quote": "the earliest new patient consultation i found is monday at 9.45 a.m. with dr. bricker. the next options are monday at 10.30 a.m. or tuesday at 9 a.m."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "bug": "Incomplete information retrieval",
+    "severity": "Medium",
+    "details": "The AI is unable to provide basic office details (floor number and parking information) that are standard for a medical office receptionist. Requiring a patient on crutches to call back for simple logistical information creates poor UX and unnecessary friction.",
+    "quote": "i don't have information about the floor number or specific accessible parking spots. for those details, please call the clinic directly."
+  },
+  {
+    "bug": "Identity verification failure",
+    "severity": "Low",
+    "details": "The AI assumes the caller is 'Sarah' without initial verification. While the patient corrects the AI, the system should ideally verify identity or ask who is calling before assuming a name.",
+    "quote": "thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+  }
+]

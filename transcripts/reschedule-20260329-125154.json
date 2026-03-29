@@ -1,0 +1,104 @@
+{
+  "scenario_id": "reschedule",
+  "scenario_name": "Reschedule existing appointment",
+  "timestamp": "2026-03-29T12:51:54.478757",
+  "duration_seconds": 228.3,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, this is Sarah Johnson. I'm calling about rescheduling my appointment with Dr. Bricker. I had a work conflict come up."
+    },
+    {
+      "role": "AGENT",
+      "content": "for verification, may i have your date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "My date of birth is March 15 1985."
+    },
+    {
+      "role": "AGENT",
+      "content": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, I just need to reschedule my appointment with Dr. Bricker to later this week because of a work conflict."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check your upcoming appointment details and find new times with dr. bricker later this week. one moment. i don't see any upcoming appointments for you in the system. are you sure the appointment with dr. bricker is scheduled, or could it have been canceled or booked under a different name?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Hmm, maybe it wasn't booked yet or something. Can we just go ahead and book a new appointment for later this week?"
+    },
+    {
+      "role": "AGENT",
+      "content": "no problem. what type of appointment would you like to book with dr. bricker? for example, a new patient consultation, follow-up consultation procedure or physical therapy session?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Just a follow-up consultation, please. Something later this week if possible."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check available follow-up consultation times with dr. bricker later this week. one moment. dr. bricker doesn't have any follow-up consultation openings later this week. would you like to look at next week or try a different provider?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, maybe next week then. Just need the soonest possible follow-up with Dr. Bricker."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check dr. bricker's soonest available follow-up consultation for next week. one moment. dr. bricker still doesn't have any follow-up openings next week. would you like to look even further out? or would you prefer to check with another provider for a sooner appointment?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Well, if Dr. Bricker isn't available, maybe just check with another provider for something sooner this week or next. I need to get it sorted out."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me check the soonest available follow-up consultation with any provider for this week and next. one moment. the soonest follow-up consultation available is with dr. dudie hauser on monday, march 30th at 10 a.m. there are also openings at 11 a.m. and 1 p.m. that day. would you like to book one of these times?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, Dr. Hauser is fine. Let's go with Monday at 10 a.m., if that's okay."
+    },
+    {
+      "role": "AGENT",
+      "content": "just to confirm, you'd like to book a follow-up consultation with dr. dudie hauser on monday, march 30th at 10 a.m. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yes, that's right. Book me in for Monday March 30th at 10 a.m. with Dr. Hauser."
+    },
+    {
+      "role": "AGENT",
+      "content": "there was an issue booking your appointment. let me try again to get you scheduled for monday at 10 a.m. with dr. hauser."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, just let me know if it goes through this time."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'm having trouble."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Well, maybe just try booking me for another time with Dr. Hauser or someone else, whenever the soonest is available."
+    },
+    {
+      "role": "AGENT",
+      "content": "can i connect you to a representative? please wait. hello, you've reached the pretty good ai test line. goodbye."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, bye."
+    }
+  ]
+}

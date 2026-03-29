@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Redundant data collection",
+    "severity": "Low",
+    "details": "The agent repeatedly asks for information (name, DOB) that the patient has already provided, indicating a lack of conversational state management.",
+    "quote": "I already gave you that it's Michael Torres, June 22 1978."
+  },
+  {
+    "bug": "Failure to address patient injury severity",
+    "severity": "Critical",
+    "details": "The patient reports a fall from a ladder with significant functional impairment (unable to lift arm). The agent fails to perform a medical triage or prioritize the patient, proceeding only with administrative record-matching.",
+    "quote": "I fell off a ladder about a week ago and it's been hurting ever since. I can't lift my arm above my head."
+  },
+  {
+    "bug": "Broken transfer logic/context loss",
+    "severity": "High",
+    "details": "The agent claims it is initiating a 'live transfer' to a support team member, but the interaction does not effectively hand over context. The agent then inserts itself into the conversation with the human support staffer, resulting in a confusing experience where the agent says 'you're welcome' to the support staffer instead of facilitating the handoff.",
+    "quote": "AGENT: live transfer. PATIENT: Hello, this is Jessica from patient support... AGENT: you're welcome."
+  },
+  {
+    "bug": "Delayed safety warning",
+    "severity": "Medium",
+    "details": "The agent provides the mandatory safety disclaimer regarding emergency symptoms only at the very end of the call, rather than at the start or during the initial intake when the patient described a traumatic fall.",
+    "quote": "if you have any urgent symptoms, please call 911 or visit the nearest urgent care."
+  }
+]

@@ -1,0 +1,63 @@
+Scenario: Edge: Saturday and Sunday appointment
+Duration: 300s
+Date: 2026-03-29 13:14
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: Yeah, this is Sarah. Can I schedule an appointment for this Saturday or Sunday? I work during the week and can't take off.
+
+Agent: for verification, may i have your date of birth?
+
+Patient: It's March 15 1985. Like I said, I really need an appointment this weekend.
+
+Agent: what type of appointment do you need? for example, a new patient consultation, follow-up procedure or physical therapy?
+
+Patient: Just a general check-up. Again, it has to be Saturday or Sunday — I can't do anything during the week.
+
+Agent: we don't offer a general checkup, but we do have new patient consultations, follow-ups, procedures, and physical therapy sessions. would you please fit your needs best?
+
+Patient: Okay, then a new patient consultation. But it still has to be this weekend. Saturday or Sunday.
+
+Agent: let me check for new patient consultation openings this saturday or sunday.
+
+Patient: Thanks. I really appreciate it. I work Monday through Friday and can't take off.
+
+Agent: there aren't any new...
+
+Patient: Wait, really? Is there any way at all? Maybe an early slot before 8am on a weekday? I could come in really early.
+
+Agent: let me check for the earliest available new patient consultation slots before 8 a.m. on weekdays. one moment. the earliest new patient consultation i found is monday at 9.45 a.m. with dr. bricker. the next options are monday at 10.30 a.m. or tuesday at 9 a.m. would any of these work or would you like me to keep looking?
+
+Patient: No, those don't work. I need Saturday or Sunday. If there's nothing, is there any chance you can make an exception? I can't take off during the week.
+
+Agent: i understand it's tough with your schedule. unfortunately, weekend appointments aren't available and i can't make exceptions to the clinic schedule. would you like me to check for the earliest weekday evening slots or is there anything else i can help with?
+
+Patient: Come on, that's not fair. I really need this. Is there anyone else I can talk to? Maybe a different doctor or clinic? Please, just see if there's anything at all before 8am Monday?
+
+Agent: i understand how important this is for you. i'll check again for any openings before 8 a.m. on monday with any provider. one moment.
+
+Patient: Okay, thanks. I'm really hoping there's something.
+
+Agent: i checked all providers.
+
+Patient: Well, what did you find? Is there literally nothing this weekend or before 8am Monday?
+
+Agent: there are no openings this weekend or before 8 a.m. monday. the earliest available is monday, 9.45 a.m. with dr. bricker. if you want, i can keep checking for cancellations or look for evening slots. let me know how you'd like to proceed.
+
+Patient: Ugh, fine. Put me down for Monday at 9:45 am then. But please, if anything opens up this weekend, call me. My number is 3135550147.
+
+Agent: let me confirm, your number is 313. 555-0147. i'll book you for monday at 9.45 a.m. with dr. bricker and note your request to be contacted if a weekend slot opens. one moment while i schedule your appointment. and it looks like there was an issue with the visit reason for booking. let me try again with a shorter visit reason and get you scheduled.
+
+Patient: Yeah, that's right. Just make sure I'm down for Monday at 9:45 am and that you'll call if something opens up this weekend.
+
+Agent: i'm having trouble.
+
+Patient: What do you mean? Can you just book me for Monday at 9:45 am and say you'll call if a weekend slot comes up?
+
+Agent: i'm having trouble booking your appointment due to a system issue with the visit reason. i'll document your request for the clinic support team so they can schedule you for monday at 9.45 a.m. and contact you if a weekend slot opens. please stay on the line while i update your request.
+
+Patient: Okay, fine. Just make sure they know it's for Monday at 9:45 am and to call me if anything comes up this weekend.
+
+Agent: since i can't complete the booking due to a system issue, and live support is available, i'll connect you to our clinic support team now. please stay on the line while i transfer you, and they'll help with your booking and notify you if a weekend slot opens. connecting you to a representative. please wait. hello,
+

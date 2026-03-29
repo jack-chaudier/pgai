@@ -1,0 +1,14 @@
+[
+  {
+    "bug": "Inappropriate disclosure of system testing/QA state",
+    "severity": "High",
+    "details": "The AI receptionist broke character and exposed internal system mechanics ('for demo purposes') to the patient. This damages professional credibility and trust. The agent should have either verified the patient through secondary means (like a phone number or full name) or handled the discrepancy as an 'unable to verify' error rather than admitting the system is a demo.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "Poor error handling for identity verification",
+    "severity": "Medium",
+    "details": "When a DOB fails to match, the agent bypasses security protocols entirely because it is a 'demo.' A production-ready AI should never accept unverified data; it should prompt the patient to verify their information again or transfer the call to a human receptionist to ensure patient data privacy and prevent record corruption.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  }
+]

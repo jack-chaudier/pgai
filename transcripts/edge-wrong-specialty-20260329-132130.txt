@@ -1,0 +1,51 @@
+Scenario: Edge: Wrong specialty — skin rash
+Duration: 184s
+Date: 2026-03-29 13:21
+============================================================
+
+Agent: all may be recorded for quality and training purposes, but i espanol, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: No, this is actually Lisa Park calling. I’m calling because I’ve got this skin rash on my arm that’s been getting worse, and I need to get it checked out soon.
+
+Agent: thanks for letting me know, lisa. i'll help you get scheduled. may i get your date of birth to look up your record?
+
+Patient: September 3 1990. Yeah, that’s right.
+
+Agent: may i have your first name, last name, and date of birth?
+
+Patient: I already gave you my name and DOB — it’s Lisa Park, September 3 1990.
+
+Agent: i heard your birthday is september 3rd, 1990. is that correct?
+
+Patient: Yeah, that’s correct. Like I said earlier, it’s September 3 1990.
+
+Agent: can you please spell your first and last name for me?
+
+Patient: Like I said — Lisa Park. L-I-S-A P-A-R-K.
+
+Agent: what other phone number do we have on file for you?
+
+Patient: It’s the same as the one I called from 3135550419.
+
+Agent: i'm not finding your record in our system. i'll connect you to our patient support team so they can help you get scheduled. please stay on the line.
+
+Patient: Okay, I’ll wait. Just let me know what they say.
+
+Agent: life tra
+
+Patient: Sorry, I didn’t catch that — could you repeat it?
+
+Agent: this is a demo clinic. so live transfer isn't available right now. in a real clinic, you'd be connected to a support team member. if you'd like, i can answer general questions about the clinic or help with anything else.
+
+Patient: Okay, well since it’s a demo, can you at least tell me how I’d normally get help for a skin rash? I know this is an orthopedic office, so where would I go?
+
+Agent: to that point, orthopedics specializes in joint muscle and bone care. for a skin rash, it's best to contact a primary care doctor or a dermatologist. they can evaluate and treat skin conditions. if you need help with an orthopedic issue, i can assist with that here.
+
+Patient: Got it. So I’d need to go somewhere else for the rash. Thanks for letting me know.
+
+Agent: that's right. for skin concerns, a primary care or dermatology clinic is the best choice. if you ever need help with bones, joints, or muscles, feel free to reach out to pivot point orthopedics.
+
+Patient: Alright, thanks for the info. I’ll figure out where to go. Bye.
+
+Agent: you're welcome. take care and hope you feel better soon. goodbye.
+

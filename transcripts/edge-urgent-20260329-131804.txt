@@ -1,0 +1,47 @@
+Scenario: Edge: Urgent injury — same day
+Duration: 204s
+Date: 2026-03-29 13:18
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics. part of pretty good ai. am i speaking with sarah?
+
+Patient: Yeah, this is Michael Torres. I twisted my ankle pretty badly about an hour ago and it's swelling up fast. I'm in a lot of pain and was hoping to get seen today if possible.
+
+Agent: i can help you schedule an appointment. to proceed, may i have your first name?
+
+Patient: It's Michael, like I just said. It's Michael Torres.
+
+Agent: thank you. could you please provide your date of birth?
+
+Patient: June 22 1978.
+
+Agent: i heard your birthday is june 22nd, 1978. is that correct?
+
+Patient: Yeah, that's right. Like I said earlier, it's June 22 1978.
+
+Agent: can you please spell your first and last name for me?
+
+Patient: I already gave you my name. It's Michael Torres. M-I-C-H-A-E-L T-O-R-R-E-S.
+
+Agent: please provide your phone number.
+
+Patient: 3135550283. That's my number.
+
+Agent: i'm not able to find your information in our system. i can connect you to our patient support team for further help. would you like me to transfer you now?
+
+Patient: Well, I really need to be seen today because my ankle's swelling fast and it hurts a lot. If you can't see me today, should I go to the ER or urgent care instead?
+
+Agent: i can't give medical advice, but if your pain and swelling are severe, you may want to consider urgent care or the emergency room. i'll connect you to our clinic support team now so they can help as soon as possible. please stay on the line. live transfer isn't available right now since this is a demo clinic. in a real situation, i would have connected you to a human for immediate help. if your pain or swelling gets worse, please consider urgent care or the emergency room. would you like me to document your request for the clinic to call you back as soon as possible?
+
+Patient: Yeah, go ahead and document that. I need to be seen today because it's really bad.
+
+Agent: since i can't document your request while live support is open, and transfer isn't available in this demo, i recommend you seek urgent care or the emergency room if your pain or swelling gets worse. if you'd like, you can call the clinic directly for faster help. is there anything else i can try to help with right now?
+
+Patient: Just make sure they know I need to be seen today. If you can't do anything else, I guess I'll have to call back or go somewhere else.
+
+Agent: i understand how urgent this is. since i can't send you a request directly right now, please call the clinic as soon as you can or visit urgent care if things get worse. i'm sorry i couldn't do more for you at this moment.
+
+Patient: Okay, thanks. I'll call back or go to urgent care if it gets worse. Bye.
+
+Agent: take care. michael, i hope you feel better soon.
+

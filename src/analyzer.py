@@ -107,16 +107,26 @@ def analyze_file(transcript_path: str) -> list[dict]:
 
 def analyze_all():
     """Analyze all transcript JSON files in transcripts/."""
+    import time
     transcript_dir = Path("transcripts")
     all_bugs = []
 
-    for path in sorted(transcript_dir.glob("call-*.json")):
-        if ".analysis." in path.name:
+    for path in sorted(transcript_dir.glob("*.json")):
+        if ".analysis." in path.name or path.name in ("all-bugs.json", "batch-results.json"):
+            continue
+        # Skip if already analyzed
+        analysis_path = path.with_suffix(".analysis.json")
+        if analysis_path.exists():
+            with open(analysis_path) as f:
+                bugs = json.load(f)
+            print(f"Skipping {path.name} (already analyzed, {len(bugs)} bugs)")
+            all_bugs.extend({"file": path.name, **bug} for bug in bugs)
             continue
         print(f"Analyzing {path.name}...", end=" ", flush=True)
         bugs = analyze_file(str(path))
         print(f"{len(bugs)} bugs found")
         all_bugs.extend({"file": path.name, **bug} for bug in bugs)
+        time.sleep(5)  # rate limit: 15 req/min
 
     # Save combined report
     report_path = transcript_dir / "all-bugs.json"

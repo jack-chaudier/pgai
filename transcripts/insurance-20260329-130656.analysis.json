@@ -1,0 +1,20 @@
+[
+  {
+    "bug": "Redundant data collection / Poor memory",
+    "severity": "Medium",
+    "details": "The agent repeatedly asks for the patient's name, DOB, and phone number despite the patient having clearly provided them earlier in the conversation. This indicates a failure in state management or context retention, leading to a frustrating user experience.",
+    "quote": "I already gave you that. It's Lisa Park, September 3 1990."
+  },
+  {
+    "bug": "Speech-to-text / Data validation error",
+    "severity": "Medium",
+    "details": "The agent failed to identify the number the patient was calling from, forcing the patient to repeat it multiple times. Furthermore, the agent misheard the number significantly (313-555-0419 vs 313-513-7316), which could lead to missed follow-ups in a real-world scenario.",
+    "quote": "you're calling from three one three five one three seven three one six is that the best number for follow up?"
+  },
+  {
+    "bug": "Confusing transition from demo mode to service",
+    "severity": "High",
+    "details": "The agent informed the user that they would have the team follow up, but then immediately broke character to explain that a live transfer wasn't available because it is a 'demo clinic'. This undermines the AI's professional persona and leaves the user uncertain if their request was actually logged.",
+    "quote": "live transfer isn't available right now since this is a demo clinic, but in a real call i would have connected you to a team member"
+  }
+]

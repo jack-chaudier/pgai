@@ -1,0 +1,37 @@
+Scenario: Cancel appointment and ask about fees
+Duration: 144s
+Date: 2026-03-29 12:54
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: Yeah, this is Michael Torres. I need to cancel my upcoming appointment because I'm feeling better and don't think I need it anymore. Is there a cancellation fee?
+
+Agent: may i have your first name, last name, and date of birth?
+
+Patient: It's Michael Torres, June 22 1978. I told you that already.
+
+Agent: i heard your birthday is june 22nd, 1978. is that correct?
+
+Patient: Yeah, that's right. Like I said, I need to cancel my appointment.
+
+Agent: can you please provide the spelling of your first and last name?
+
+Patient: Michael, M-I-C-H-A-E-L. Torres, T-O-R-R-E-S. Can we just get this done?
+
+Agent: please provide your phone number.
+
+Patient: It's 3135550283. I already gave you all my info. Just let me cancel the appointment.
+
+Agent: i can't complete the cancellation right now because i'm unable to find your record in the system. normally i would transfer you to a live support agent, but that option isn't available at the moment. the clinic support team will need to follow up with you directly to finish canceling your appointment and answer your question about any cancellation fee. is there anything else i can help you with today?
+
+Patient: Okay, so if you can't find me, can you at least tell me the general cancellation policy? Like, is there normally a fee or something?
+
+Agent: i don't have access to the specific cancellation policy details for pivot point orthopedics. most clinics do not charge a fee if you cancel in advance, but policies can vary. the clinic support team can confirm the exact policy when they follow up with you.
+
+Patient: Alright, I guess I'll wait for them to call. Thanks.
+
+Agent: you're welcome. the clinic team will reach out to help with your cancellation and any questions. have a good day!
+
+Patient: Bye.
+

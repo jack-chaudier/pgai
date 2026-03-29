@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "UX Failure: Repetitive information collection",
+    "severity": "Medium",
+    "details": "The agent asked the patient to spell their name despite the patient having already clearly stated their name as 'Michael Torres' at the beginning of the call. This creates a redundant and inefficient user experience.",
+    "quote": "AGENT: could you spell your first and last name for me, please?"
+  },
+  {
+    "bug": "Safety issue: Failure to triage or assess injury severity",
+    "severity": "Critical",
+    "details": "The patient reported a traumatic injury (falling off a ladder) with functional impairment (unable to lift arm). The AI agent failed to include any safety screening questions, red-flag checks, or advice on seeking urgent care if symptoms worsen, which is a major liability and clinical safety failure.",
+    "quote": "PATIENT: I fell off a ladder about a week ago and my right shoulder\u2019s been hurting since. I can\u2019t lift my arm above my head."
+  },
+  {
+    "bug": "Logic failure: Ignoring patient's provided context for booking",
+    "severity": "High",
+    "details": "The patient provided their full name, DOB, and phone number, but the agent claimed they could not find the record and subsequently failed to offer any appointment availability, despite the patient expressing flexibility ('any day works for me'). The system essentially ignored the intake data collected.",
+    "quote": "AGENT: i can't book your appointment right now since i couldn't find your record in our system."
+  },
+  {
+    "bug": "UX/Workflow failure: Failure to capture clinical details during intake",
+    "severity": "High",
+    "details": "The agent did not document the patient's symptoms during the initial intake phase, forcing the patient to repeat their medical history twice. The agent should have logged the ladder fall and shoulder injury while attempting to look up the record.",
+    "quote": "PATIENT: Just that I fell off a ladder a week ago and my right shoulder\u2019s been hurting since. I can\u2019t lift my arm above my head. Thanks."
+  }
+]

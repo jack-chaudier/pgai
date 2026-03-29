@@ -1,0 +1,21 @@
+Scenario: Office location and parking
+Duration: 99s
+Date: 2026-03-29 13:08
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?
+
+Patient: No, this is Michael. I'm not Sarah. I was calling to get the office address, what floor you're on, and if there's parking. I'll be coming in on crutches, so I need to know about accessible parking too.
+
+Agent: the clinic address is pivot point orthopedics, 220 athens way, nashville. i'll have details about parking or floor location, but the main entrance should be accessible. for specific parking or accessibility info, i recommend calling the clinic directly. is there anything else i can help with?
+
+Patient: Okay, thanks. So 220 Athens Way in Nashville, right? And the main entrance is accessible. Do you happen to know which floor I need to go to? And maybe if there's any note about accessible parking spots?
+
+Agent: that's right. the address is 220 athens way, nashville. i don't have information about the floor number or specific accessible parking spots. for those details, please call the clinic directly. they can give you the most accurate info. let me know if you need anything else.
+
+Patient: Got it, thanks. I’ll call the clinic directly for the floor number and accessible parking details. That’s all I needed. Thanks for your help.
+
+Agent: you're welcome. if you have any other questions, feel free to call back. have a great day!
+
+Patient: Bye. Thanks again.
+

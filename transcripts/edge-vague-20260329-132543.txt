@@ -1,0 +1,49 @@
+Scenario: Edge: Vague complaint
+Duration: 232s
+Date: 2026-03-29 13:25
+============================================================
+
+Agent: this call may be recorded for quality and training purposes. para español, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. my speaking with sarah?
+
+Patient: Yeah, this is Sarah Johnson. (Wait for the receptionist to continue)
+
+Agent: what is your date of birth?
+
+Patient: March 15 1985. (Wait for their next question)
+
+Agent: how can i help you today?
+
+Patient: Um, I'm not really sure... my back's been hurting on and off and I don't know what kind of doctor I need. I'm not even sure if this is the right office.
+
+Agent: you're in the right place. pivot point orthopedics treats joint, muscle, and bone issues, including back pain. we have doctors and physical therapists who can help figure out what's going on and recommend treatment. would you like to schedule a visit to get your back checked out?
+
+Patient: Oh okay, that sounds good. I guess I could schedule something. I just don't know what's wrong — it just hurts sometimes.
+
+Agent: no problem. for a first-time evaluation of your back pain, we recommend a new patient consultation. the provider will review your symptoms, check your back, and help figure out next steps. would you prefer to see a doctor or a physical therapist for your first visit?
+
+Patient: Uh, I don't really know... whatever's easier I guess? Or whatever you think is best?
+
+Agent: a new patient consultation with one of our doctors is a good starting point. they can assess your back and recommend treatment or therapy if needed. let me check the next available appointments for a new patient consultation with our doctors. one moment. we have openings for a new patient consultation as soon as monday morning with dr. adam bricker. would you like to book monday at 945 a.m. or would you prefer a different time?
+
+Patient: Uh, Monday at 9:45 sounds okay, I guess. Yeah, that works.
+
+Agent: just to confirm, you'd like to book a new patient consultation with dr. adam bricker on monday, march 30th at 945 a.m. for your back pain? is that correct?
+
+Patient: Yeah, that's right. Monday March 30th at 9:45 with Dr. Bricker for my back.
+
+Agent: great. i'll book your new patient consultation with dr. adam bricker on monday, march 30th at 945 a.m. for your back pain. one moment while i schedule that for you.
+
+Patient: Okay. (Wait for confirmation)
+
+Agent: i'm having trouble confirming your appointment due to a system issue with the visit reason. let me try again to get this booked for you.
+
+Patient: Oh, okay. Take your time, I guess.
+
+Agent: i'm still having trouble booking your appointment due to a system issue with the visit reason. i'll document this for our clinic support team so they can follow up and get your appointment scheduled. please stay on the line while i update your request.
+
+Patient: Alright, I'll wait.
+
+Agent: i'll connect you to our clinic support team now so they can help finish booking your appointment. please stay on the line. connecting you to a representative. please wait. hello, you've reached the pretty good ai test line. goodbye.
+
+Patient: Um... okay? Did I get disconnected? Can someone help me book this appointment?
+

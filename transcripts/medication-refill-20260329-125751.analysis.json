@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Insecure identity verification process",
+    "severity": "Critical",
+    "details": "The AI admits the patient's DOB does not match records but overrides this security protocol for 'demo purposes'. This is a major HIPAA/privacy violation that allows an unverified person to access medical records or refill requests.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "Redundant data collection",
+    "severity": "Low",
+    "details": "The agent asks the patient to repeat the medication name and dosage despite the patient providing this information clearly in the opening turn.",
+    "quote": "[PATIENT] I ran out of the ibuprofen 800mg... [AGENT] what medication do you need refilled?"
+  },
+  {
+    "bug": "System failure during critical transaction",
+    "severity": "Critical",
+    "details": "The agent repeatedly fails to process a refill request due to a technical error and provides no resolution, ultimately abandoning the call.",
+    "quote": "there was a technical issue creating your refill request. let me try one more time to make sure your request is sent to the clinic."
+  },
+  {
+    "bug": "Unexpected call termination",
+    "severity": "Critical",
+    "details": "After failing to process the refill, the agent attempts to transfer the patient to a representative, but instead triggers a recorded 'goodbye' message and drops the call, leaving the patient's medical need unresolved.",
+    "quote": "connecting you to a representative. please wait. hello, you've reached the pretty good ai test line. goodbye."
+  }
+]

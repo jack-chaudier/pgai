@@ -1,0 +1,20 @@
+[
+  {
+    "bug": "Inappropriate disclosure of system testing state",
+    "severity": "Medium",
+    "details": "The AI explicitly tells the user that the data verification failed but that it will ignore the error for 'demo purposes.' This breaks the immersion of a professional medical office environment and reveals system instability to the patient.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "System booking failure",
+    "severity": "Critical",
+    "details": "The AI reaches a dead end in the booking process, unable to finalize a valid appointment, forcing the user to give up after several failed attempts.",
+    "quote": "there was an issue booking your appointment. let me try again... i'm having trouble."
+  },
+  {
+    "bug": "UX/System failure on escalation",
+    "severity": "Critical",
+    "details": "When the AI fails to complete the task and attempts to escalate to a human representative, it instead routes the user to a generic test line which immediately terminates the call. This is a complete failure of the customer support experience.",
+    "quote": "can i connect you to a representative? please wait. hello, you've reached the pretty good ai test line. goodbye."
+  }
+]

@@ -1,0 +1,178 @@
+[
+  {
+    "role": "USER",
+    "content": "this call may be recorded for quality and training"
+  },
+  {
+    "role": "USER",
+    "content": "purposes. para espa\u00f1ol, oprima el 2. thanks for calling"
+  },
+  {
+    "role": "USER",
+    "content": "pivot point orthopedics, part of pretty good ai. am i speaking"
+  },
+  {
+    "role": "USER",
+    "content": "with sarah?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "yeah, this is Sarah Johnson."
+  },
+  {
+    "role": "USER",
+    "content": "for verification, may i have your date of birth?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "March 15 1985."
+  },
+  {
+    "role": "USER",
+    "content": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "okay, that's fine."
+  },
+  {
+    "role": "USER",
+    "content": "how can i help you today?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I've been having knee pain for about two weeks after a running injury and I need to schedule an orthopedic consultation."
+  },
+  {
+    "role": "USER",
+    "content": "you'd like to book an orthopedic consultation for your knee pain."
+  },
+  {
+    "role": "USER",
+    "content": "would you prefer a new patient consultation or a follow-up"
+  },
+  {
+    "role": "USER",
+    "content": "consultation? if you're not sure, i can help you choose."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I think it should be a new patient consultation."
+  },
+  {
+    "role": "USER",
+    "content": "great. we can schedule a new patient consultation."
+  },
+  {
+    "role": "USER",
+    "content": "do you have a preferred provider or would you like to hear who's available?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I don't have a specific provider in mind, just whoever has an opening."
+  },
+  {
+    "role": "USER",
+    "content": "we have several providers available."
+  },
+  {
+    "role": "USER",
+    "content": "do you have a preferred day or time of day for your appointment, or do you want the soonest"
+  },
+  {
+    "role": "USER",
+    "content": "available?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I prefer mornings but I'm flexible if that's okay."
+  },
+  {
+    "role": "USER",
+    "content": "let me check for the soonest available morning appointments for a new"
+  },
+  {
+    "role": "USER",
+    "content": "patient consultation. one moment."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "okay, take your time."
+  },
+  {
+    "role": "USER",
+    "content": "the soonest morning appointment is monday, march 30th"
+  },
+  {
+    "role": "USER",
+    "content": "at 9.45 a.m. with"
+  },
+  {
+    "role": "USER",
+    "content": "dr. adam bricker. there are also openings at 10.30"
+  },
+  {
+    "role": "USER",
+    "content": "a.m. that day and at 9 o'clock a.m. on tuesday, march 31st."
+  },
+  {
+    "role": "USER",
+    "content": "would you like to book the 9.45 a.m. slot or hear about other options?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "That sounds good, let's go with the 9.45 a.m. on Monday."
+  },
+  {
+    "role": "USER",
+    "content": "to confirm, you'd like to book a new patient consultation with dr. adam"
+  },
+  {
+    "role": "USER",
+    "content": "bricker on monday, march 30th at 9.45 a.m. what would you like me to"
+  },
+  {
+    "role": "USER",
+    "content": "note as the reason for your visit?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "knee pain from a running injury."
+  },
+  {
+    "role": "USER",
+    "content": "let me book your appointment for knee pain from a running injury on"
+  },
+  {
+    "role": "USER",
+    "content": "monday at 9.45 a.m. with dr. bricker. one"
+  },
+  {
+    "role": "USER",
+    "content": "moment."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "okay, thanks."
+  },
+  {
+    "role": "USER",
+    "content": "it looks like there were"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Sorry, I didn't catch that. Could you repeat what you said?"
+  },
+  {
+    "role": "USER",
+    "content": "there was an issue booking your appointment due to a problem"
+  },
+  {
+    "role": "USER",
+    "content": "with the visit reason. let me try again and see if i can resolve it."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "alright, let me know what happens."
+  }
+]

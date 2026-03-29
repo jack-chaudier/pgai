@@ -1,0 +1,26 @@
+[
+  {
+    "bug": "Insecure verification process",
+    "severity": "High",
+    "details": "The AI admits the provided date of birth does not match the records but proceeds with the call anyway. This violates HIPAA compliance and basic security protocols for a medical office.",
+    "quote": "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+  },
+  {
+    "bug": "System error during booking process",
+    "severity": "Critical",
+    "details": "The AI encounters an unrecoverable system error when processing the 'visit reason' field, preventing the appointment from being booked successfully.",
+    "quote": "it looks like there's an issue with the visit reason format. let me try booking your appointment again. one moment while i fix that."
+  },
+  {
+    "bug": "UX failure: Dead-end transfer",
+    "severity": "Critical",
+    "details": "After failing to book the appointment, the AI attempts to transfer the patient to a human, but the transfer is routed to an automated message that says 'goodbye' and hangs up, leaving the patient without assistance.",
+    "quote": "connecting you to a representative. please wait. hello. you've reached the pretty good ai test line. goodbye."
+  },
+  {
+    "bug": "Logic failure: Improper appointment classification",
+    "severity": "Medium",
+    "details": "The patient is a returning patient needing a follow-up for knee pain, but the AI offers slots specifically labeled for a 'new patient consultation.'",
+    "quote": "dr. bricker has openings for a new patient consultation on monday, march 30th at 9.45 a.m. and 10.30 a.m."
+  }
+]

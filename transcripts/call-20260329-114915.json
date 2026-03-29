@@ -1,0 +1,198 @@
+[
+  {
+    "role": "USER",
+    "content": "this call may be recorded for quality and training purposes."
+  },
+  {
+    "role": "USER",
+    "content": "para espa\u00f1ol,"
+  },
+  {
+    "role": "USER",
+    "content": "oprima el dos."
+  },
+  {
+    "role": "USER",
+    "content": "thanks for calling pivot point orthopedics."
+  },
+  {
+    "role": "USER",
+    "content": "part of pretty good ai."
+  },
+  {
+    "role": "USER",
+    "content": "am i speaking with sarah?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Yes, this is Sarah Johnson. I'd like to schedule an orthopedic consultation."
+  },
+  {
+    "role": "USER",
+    "content": "can you please provide your date of birth?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Sure, my date of birth is March 15 1985."
+  },
+  {
+    "role": "USER",
+    "content": "the birthday doesn't match our records, but for demo purposes,"
+  },
+  {
+    "role": "USER",
+    "content": "i'll accept it."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Okay, thank you. I've been having knee pain for the past two weeks after a running injury, and I'd like to schedule an orthopedic consultation."
+  },
+  {
+    "role": "USER",
+    "content": "thanks for sharing that, sarah."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I understand, and I\u2019d like to get an appointment set up as soon as possible."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I prefer mornings but I'm flexible on dates."
+  },
+  {
+    "role": "USER",
+    "content": "for your knee pain, a new patient consultation is the best fit."
+  },
+  {
+    "role": "USER",
+    "content": "would you like to see the first available provider?"
+  },
+  {
+    "role": "USER",
+    "content": "or do you have a preference for who you see?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "I don\u2019t have a specific provider preference, so the first available one works for me."
+  },
+  {
+    "role": "USER",
+    "content": "we have openings this week and early next week. do you"
+  },
+  {
+    "role": "USER",
+    "content": "prefer mornings or afternoons for your appointment?"
+  },
+  {
+    "role": "USER",
+    "content": "let me check for the first available morning consultation with any"
+  },
+  {
+    "role": "USER",
+    "content": "provider."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Thank you, I appreciate it."
+  },
+  {
+    "role": "USER",
+    "content": "one moment."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "No problem, I\u2019ll wait."
+  },
+  {
+    "role": "USER",
+    "content": "the soonest"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Great, what is the date and time?"
+  },
+  {
+    "role": "USER",
+    "content": "the next available morning consultation is monday, march"
+  },
+  {
+    "role": "USER",
+    "content": "thirtieth at nine forty five a.m. with dr. adam bricker,"
+  },
+  {
+    "role": "USER",
+    "content": "would you like to book this appointment?"
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Yes, that works for me. Please go ahead and book it."
+  },
+  {
+    "role": "USER",
+    "content": "it looks like there was an issue booking the appointment due to a"
+  },
+  {
+    "role": "USER",
+    "content": "problem with the visit reason."
+  },
+  {
+    "role": "USER",
+    "content": "let me try again and see if i can resolve this for you."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Okay, thank you for looking into that."
+  },
+  {
+    "role": "USER",
+    "content": "i'm having trouble booking your appointment due to a system issue"
+  },
+  {
+    "role": "USER",
+    "content": "with the visit reason. i'll document this for our clinic support team so they"
+  },
+  {
+    "role": "USER",
+    "content": "can follow up and get you scheduled as soon as possible."
+  },
+  {
+    "role": "USER",
+    "content": "please stay on the line while i update your request."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Alright, I\u2019ll stay on the line. Please let the clinic support team know it\u2019s for a knee pain consultation after a running injury."
+  },
+  {
+    "role": "USER",
+    "content": "since our live support team is available, i'll connect you to"
+  },
+  {
+    "role": "USER",
+    "content": "them now so they can help finish booking your appointment."
+  },
+  {
+    "role": "USER",
+    "content": "please stay on the line."
+  },
+  {
+    "role": "USER",
+    "content": "connecting you to a representative. please wait."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Okay, I\u2019ll wait to be connected. Thank you."
+  },
+  {
+    "role": "USER",
+    "content": "hello, you've reached the pretty good ai test line."
+  },
+  {
+    "role": "USER",
+    "content": "goodbye."
+  },
+  {
+    "role": "ASSISTANT",
+    "content": "Goodbye, thank you for your help."
+  }
+]

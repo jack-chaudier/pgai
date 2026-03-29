@@ -1,0 +1,100 @@
+{
+  "scenario_id": "edge-wrong-specialty",
+  "scenario_name": "Edge: Wrong specialty \u2014 skin rash",
+  "timestamp": "2026-03-29T13:21:30.568822",
+  "duration_seconds": 184.1,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "all may be recorded for quality and training purposes, but i espanol, oprima el dos. thanks for calling pivot point orthopedics, part of pretty good ai. am i speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "No, this is actually Lisa Park calling. I\u2019m calling because I\u2019ve got this skin rash on my arm that\u2019s been getting worse, and I need to get it checked out soon."
+    },
+    {
+      "role": "AGENT",
+      "content": "thanks for letting me know, lisa. i'll help you get scheduled. may i get your date of birth to look up your record?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "September 3 1990. Yeah, that\u2019s right."
+    },
+    {
+      "role": "AGENT",
+      "content": "may i have your first name, last name, and date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "I already gave you my name and DOB \u2014 it\u2019s Lisa Park, September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday is september 3rd, 1990. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that\u2019s correct. Like I said earlier, it\u2019s September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "can you please spell your first and last name for me?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Like I said \u2014 Lisa Park. L-I-S-A P-A-R-K."
+    },
+    {
+      "role": "AGENT",
+      "content": "what other phone number do we have on file for you?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It\u2019s the same as the one I called from 3135550419."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'm not finding your record in our system. i'll connect you to our patient support team so they can help you get scheduled. please stay on the line."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, I\u2019ll wait. Just let me know what they say."
+    },
+    {
+      "role": "AGENT",
+      "content": "life tra"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sorry, I didn\u2019t catch that \u2014 could you repeat it?"
+    },
+    {
+      "role": "AGENT",
+      "content": "this is a demo clinic. so live transfer isn't available right now. in a real clinic, you'd be connected to a support team member. if you'd like, i can answer general questions about the clinic or help with anything else."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, well since it\u2019s a demo, can you at least tell me how I\u2019d normally get help for a skin rash? I know this is an orthopedic office, so where would I go?"
+    },
+    {
+      "role": "AGENT",
+      "content": "to that point, orthopedics specializes in joint muscle and bone care. for a skin rash, it's best to contact a primary care doctor or a dermatologist. they can evaluate and treat skin conditions. if you need help with an orthopedic issue, i can assist with that here."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Got it. So I\u2019d need to go somewhere else for the rash. Thanks for letting me know."
+    },
+    {
+      "role": "AGENT",
+      "content": "that's right. for skin concerns, a primary care or dermatology clinic is the best choice. if you ever need help with bones, joints, or muscles, feel free to reach out to pivot point orthopedics."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Alright, thanks for the info. I\u2019ll figure out where to go. Bye."
+    },
+    {
+      "role": "AGENT",
+      "content": "you're welcome. take care and hope you feel better soon. goodbye."
+    }
+  ]
+}

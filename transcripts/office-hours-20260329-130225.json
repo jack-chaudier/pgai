@@ -1,0 +1,104 @@
+{
+  "scenario_id": "office-hours",
+  "scenario_name": "Office hours and weekend availability",
+  "timestamp": "2026-03-29T13:02:25.810997",
+  "duration_seconds": 255.6,
+  "transcript": [
+    {
+      "role": "AGENT",
+      "content": "this call may be recorded for quality and training purposes. para espa\u00f1ol, oprima el 2. thanks for calling pivot point orthopedics, part of pretty good ai. my speaking with sarah?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, this is Lisa Park. I was wondering about your office hours? I work a regular nine-to-five, so I can only come in early in the morning or on weekends. Are you open on Saturdays or Sundays?"
+    },
+    {
+      "role": "AGENT",
+      "content": "we're open monday through friday. but not on saturdays or sundays. on most days, we have early morning appointments, starting at 9 a.m., and on wednesdays, we open at noon. would you like to hear about early morning availability during the week?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Oh okay, so no weekends then? Yeah, could you let me know about those early morning slots during the week? Like, what's available on Monday, Tuesday, or Thursday?"
+    },
+    {
+      "role": "AGENT",
+      "content": "may i have your first name, last name, and date of birth?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It's Lisa Park, September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday is september 3rd, 1990. is that correct?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, that's right."
+    },
+    {
+      "role": "AGENT",
+      "content": "could you spell your first and last name for me, please?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Sure, it's L-I-S-A P-A-R-K."
+    },
+    {
+      "role": "AGENT",
+      "content": "what other phone number do we have on file for you?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "It's just the one, 3135550419. That's the only number I use."
+    },
+    {
+      "role": "AGENT",
+      "content": "let me confirm i have your number as three five five five zero four one nine. is that correct or did i miss a digit? could you repeat the full number for me?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, it's 3135550419. That's correct. I already gave you that. It's Lisa Park, September 3 1990."
+    },
+    {
+      "role": "AGENT",
+      "content": "i heard your birthday as september 3rd, 1990."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yes, that's correct. I already mentioned it earlier. I already did. It's L-I-S-A P-A-R-K. I only have the one number, 3135550419. I told you that already."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'm having trouble pulling up your record in our system. i can connect you to our patient support team to help with your scheduling request. would you like me to transfer you now?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, okay, I guess so. Go ahead and transfer me."
+    },
+    {
+      "role": "AGENT",
+      "content": "live transfer isn't available right now since this is a demo clinic. in a real situation, i would have connected you to a human for support. if you'd like, we can keep going and i'll do my best to help with your scheduling questions. would you like to continue?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Yeah, let's keep going then. I still need to know about those early morning appointments on weekdays."
+    },
+    {
+      "role": "AGENT",
+      "content": "thanks for your patience. since i can't find your record in our system, i'm unable to check specific appointment slots. i'll make sure our clinic support team follows up with you about early morning availability. is there anything else you'd like help with today?"
+    },
+    {
+      "role": "PATIENT",
+      "content": "Well, I guess that's it then. Just let me know when they get back to me about those early slots. Thanks."
+    },
+    {
+      "role": "AGENT",
+      "content": "i'll document your request for early morning weekday appointments and our clinic support team will get back to you as soon as they can. have a great day."
+    },
+    {
+      "role": "PATIENT",
+      "content": "Okay, thanks. Bye."
+    }
+  ]
+}
