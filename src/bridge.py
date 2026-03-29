@@ -144,19 +144,33 @@ class TwilioNovaBridge:
             return
 
         # Build stereo WAV: left = inbound (PGAI agent), right = outbound (our bot)
+        # Inbound audio is real-time paced (Twilio sends 20ms chunks at 20ms intervals)
+        # so timestamps work. Outbound audio arrives in bursts from Nova, so we
+        # track a running playback position instead.
         total_duration = self._audio_timeline[-1][0] - self._call_start + 0.5
         total_samples = int(total_duration * SAMPLE_RATE)
         left = np.zeros(total_samples, dtype=np.int16)   # inbound
         right = np.zeros(total_samples, dtype=np.int16)   # outbound
+        out_pos = 0  # running write position for outbound
 
         for timestamp, direction, mulaw_bytes in self._audio_timeline:
-            offset = int((timestamp - self._call_start) * SAMPLE_RATE)
             pcm = mulaw_decode(mulaw_bytes)
-            end = min(offset + len(pcm), total_samples)
-            n = end - offset
-            if n > 0 and offset >= 0:
-                channel = left if direction == "in" else right
-                channel[offset:end] = pcm[:n]
+            if direction == "in":
+                offset = int((timestamp - self._call_start) * SAMPLE_RATE)
+                end = min(offset + len(pcm), total_samples)
+                n = end - offset
+                if n > 0 and offset >= 0:
+                    left[offset:end] = pcm[:n]
+            else:
+                # For outbound, use timestamp for initial position but advance
+                # sequentially within each burst to avoid overlap
+                ts_offset = int((timestamp - self._call_start) * SAMPLE_RATE)
+                offset = max(ts_offset, out_pos)
+                end = min(offset + len(pcm), total_samples)
+                n = end - offset
+                if n > 0 and offset >= 0:
+                    right[offset:end] = pcm[:n]
+                    out_pos = offset + len(pcm)
 
         # Interleave stereo
         stereo = np.column_stack((left, right)).flatten()
