@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 app = FastAPI()
 
-DEFAULT_PROMPT = (
+PROMPT_TEMPLATE = (
     "You are a patient calling a medical office. You are the PATIENT — not the "
     "receptionist. Only say things a patient would say. Never ask 'how can I help you' "
     "or say things a receptionist would say.\n\n"
@@ -28,38 +28,23 @@ DEFAULT_PROMPT = (
     "- NEVER start with 'Sure!' or 'Of course!' — vary your openings.\n"
     "- Do not sound overly polite or enthusiastic. You're a normal person "
     "just trying to get through a phone call.\n"
-    "- If you already told them something and they ask again, gently note that "
-    "— like 'yeah I mentioned that, it's the knee pain from running.'\n"
+    "- If you already told them something and they ask again, gently note that.\n"
     "- If they say goodbye, just say bye.\n\n"
-    "PERSONA:\n"
-    "- Name: Sarah Johnson\n"
-    "- Date of birth: March 15, 1985\n"
-    "- Phone: 313-555-0147\n\n"
-    "YOUR GOAL:\n"
-    "You've had knee pain for about two weeks after a running injury. "
-    "You want to schedule an orthopedic consultation. You prefer mornings but you're flexible."
+    "PERSONA:\n{persona}\n\n"
+    "YOUR GOAL:\n{goal}"
 )
 
+# Scenario storage for the current call (set by make_call, read by websocket handler)
+_current_scenario: dict | None = None
 
-@app.get("/test-nova")
-async def test_nova():
-    """Diagnostic: test Nova Sonic connection inside the server process."""
-    import asyncio
-    from src.nova_sonic import NovaSonicSession
-    log.info("Testing Nova Sonic connection (threaded)...")
-    session = NovaSonicSession(system_prompt="Say hello.")
-    try:
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(None, session.start)
-        session.stop()
-        log.info("Nova Sonic connection OK")
-        return {"status": "ok"}
-    except TimeoutError:
-        log.error("Nova Sonic connection TIMED OUT")
-        return {"status": "timeout"}
-    except Exception as e:
-        log.error("Nova Sonic connection FAILED: %s", e)
-        return {"status": "error", "detail": str(e)}
+
+@app.post("/set-scenario")
+async def set_scenario(request: Request):
+    """Set the scenario for the next call."""
+    global _current_scenario
+    _current_scenario = await request.json()
+    log.info("Scenario set: %s", _current_scenario.get("name", "unknown"))
+    return {"status": "ok"}
 
 
 @app.post("/twilio/voice")
@@ -79,16 +64,32 @@ async def twilio_voice(request: Request):
 @app.websocket("/ws/twilio")
 async def twilio_websocket(websocket: WebSocket):
     """Handle Twilio media stream — bridge to Nova Sonic."""
+    global _current_scenario
     await websocket.accept()
     stream = TwilioStream(ws=websocket)
 
-    prompt = os.environ.get("PATIENT_PROMPT", DEFAULT_PROMPT)
+    scenario = _current_scenario
+    _current_scenario = None
+
+    if scenario:
+        prompt = PROMPT_TEMPLATE.format(
+            persona=scenario.get("persona", ""),
+            goal=scenario.get("goal", ""),
+        )
+        scenario_id = scenario.get("id", "unknown")
+    else:
+        prompt = PROMPT_TEMPLATE.format(
+            persona="Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+            goal="You want to schedule an orthopedic consultation for knee pain.",
+        )
+        scenario_id = "default"
+
     bridge = TwilioNovaBridge(twilio=stream, system_prompt=prompt, voice_id="tiffany")
 
     try:
         transcript = await bridge.run()
         if transcript:
-            log.info("Transcript (%d entries):", len(transcript))
+            log.info("Transcript [%s] (%d entries):", scenario_id, len(transcript))
             for entry in transcript:
                 log.info("  [%s] %s", entry["role"], entry["content"][:100])
     except Exception as e:

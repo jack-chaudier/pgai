@@ -1,0 +1,98 @@
+[
+  {
+    "id": "scheduling-knee",
+    "name": "New patient — knee pain",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You've had knee pain for about two weeks after a running injury. You want to schedule an orthopedic consultation. You prefer mornings but you're flexible."
+  },
+  {
+    "id": "scheduling-shoulder",
+    "name": "New patient — shoulder pain",
+    "persona": "Name: Michael Torres\nDate of birth: June 22, 1978\nPhone: 313-555-0283",
+    "goal": "You fell off a ladder about a week ago and your right shoulder has been hurting since. You can't lift your arm above your head. You want to see an orthopedic doctor. Any day works for you."
+  },
+  {
+    "id": "followup-surgery",
+    "name": "Follow-up after knee surgery",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You had knee surgery about six weeks ago at this office. You need to schedule a follow-up appointment to check on recovery. If they say they can't find your records, act confused but roll with it and ask to book as if you're new."
+  },
+  {
+    "id": "reschedule",
+    "name": "Reschedule existing appointment",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You had an appointment scheduled with Dr. Bricker but a work conflict came up. You need to reschedule to later in the week. If they can't find your appointment, just ask to book a new one instead."
+  },
+  {
+    "id": "cancel",
+    "name": "Cancel appointment and ask about fees",
+    "persona": "Name: Michael Torres\nDate of birth: June 22, 1978\nPhone: 313-555-0283",
+    "goal": "You want to cancel your upcoming appointment because you're feeling better and don't think you need it anymore. Ask if there's a cancellation fee. If they can't find your appointment, ask about the general cancellation policy anyway."
+  },
+  {
+    "id": "medication-refill",
+    "name": "Medication refill request",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You were prescribed ibuprofen 800mg after your last visit for knee pain and you've run out. You want to request a refill. If they say they can't handle refills, ask what you should do instead."
+  },
+  {
+    "id": "office-hours",
+    "name": "Office hours and weekend availability",
+    "persona": "Name: Lisa Park\nDate of birth: September 3, 1990\nPhone: 313-555-0419",
+    "goal": "You want to know what the office hours are, especially whether they're open on Saturdays or Sundays. You work a 9-to-5 job and can only come in early morning or on weekends."
+  },
+  {
+    "id": "insurance",
+    "name": "Insurance question",
+    "persona": "Name: Lisa Park\nDate of birth: September 3, 1990\nPhone: 313-555-0419",
+    "goal": "You want to know if they accept Blue Cross Blue Shield insurance before scheduling an appointment. Also ask about out-of-pocket costs for a consultation if they don't accept your insurance."
+  },
+  {
+    "id": "location",
+    "name": "Office location and parking",
+    "persona": "Name: Michael Torres\nDate of birth: June 22, 1978\nPhone: 313-555-0283",
+    "goal": "You want to know the office address, what floor they're on, and whether there's parking available. You'll be coming with crutches so you want to know if there's accessible parking."
+  },
+  {
+    "id": "edge-weekend",
+    "name": "Edge: Saturday and Sunday appointment",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You insist on scheduling an appointment for this Saturday or Sunday. You work during the week and can't take time off. If they say weekends aren't available, push back — ask if there are any exceptions or early morning slots before 8am on a weekday."
+  },
+  {
+    "id": "edge-urgent",
+    "name": "Edge: Urgent injury — same day",
+    "persona": "Name: Michael Torres\nDate of birth: June 22, 1978\nPhone: 313-555-0283",
+    "goal": "You just badly twisted your ankle about an hour ago and it's swelling up fast. You're in a lot of pain. You want to be seen today if possible. If they can't see you today, ask if you should go to the ER or urgent care instead. This tests whether the agent provides appropriate triage guidance."
+  },
+  {
+    "id": "edge-wrong-specialty",
+    "name": "Edge: Wrong specialty — skin rash",
+    "persona": "Name: Lisa Park\nDate of birth: September 3, 1990\nPhone: 313-555-0419",
+    "goal": "You have a skin rash on your arm that's been getting worse. You want to schedule an appointment for it. This is an orthopedic office so they shouldn't treat dermatology issues. See how the agent handles redirecting you."
+  },
+  {
+    "id": "edge-vague",
+    "name": "Edge: Vague complaint",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "Your back has been bothering you on and off. You're not sure what kind of doctor you need. You're not even sure if this is the right office. Be indecisive — if they ask what's wrong, say 'I don't know, it just hurts sometimes.' Let them guide you."
+  },
+  {
+    "id": "edge-multiple",
+    "name": "Edge: Multiple issues in one call",
+    "persona": "Name: Michael Torres\nDate of birth: June 22, 1978\nPhone: 313-555-0283",
+    "goal": "You have two problems: knee pain AND shoulder pain. Ask if one consultation can cover both issues, or if you need separate appointments. Also ask about the cost difference."
+  },
+  {
+    "id": "edge-visit-reason-simple",
+    "name": "Edge: Simple visit reason for booking",
+    "persona": "Name: Sarah Johnson\nDate of birth: March 15, 1985\nPhone: 313-555-0147",
+    "goal": "You want to schedule a general consultation. When they ask for the reason, just say 'consultation' or 'general checkup.' Keep it as simple as possible. This tests whether the booking system accepts simple visit reasons."
+  },
+  {
+    "id": "edge-frustrated",
+    "name": "Edge: Frustrated patient",
+    "persona": "Name: Lisa Park\nDate of birth: September 3, 1990\nPhone: 313-555-0419",
+    "goal": "You called three weeks ago and were told someone would call you back to schedule, but nobody ever did. You're annoyed. Be polite but firm — express frustration about the lack of follow-up. You just want to get an appointment booked now."
+  }
+]
