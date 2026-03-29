@@ -1,8 +1,10 @@
 """Audio conversion utilities for bridging Twilio and Nova Sonic audio formats."""
 
 import base64
+from math import gcd
 
 import numpy as np
+from scipy.signal import resample_poly
 
 # G.711 mu-law constants
 _MULAW_BIAS = 0x84  # 132
@@ -49,16 +51,16 @@ def mulaw_encode(pcm_samples: np.ndarray) -> bytes:
 
 
 def resample(samples: np.ndarray, from_rate: int, to_rate: int) -> np.ndarray:
-    """Resample audio using linear interpolation. Returns int16 ndarray."""
+    """Resample audio with proper anti-alias filtering. Returns int16 ndarray."""
     if len(samples) == 0:
         return np.array([], dtype=np.int16)
     if from_rate == to_rate:
         return samples.astype(np.int16)
 
-    num_output = int(len(samples) * to_rate / from_rate)
-    x_old = np.arange(len(samples))
-    x_new = np.linspace(0, len(samples) - 1, num_output)
-    resampled = np.interp(x_new, x_old, samples.astype(np.float64))
+    # resample_poly handles anti-aliasing internally
+    g = gcd(from_rate, to_rate)
+    up, down = to_rate // g, from_rate // g
+    resampled = resample_poly(samples.astype(np.float64), up, down)
     return np.clip(resampled, -32768, 32767).astype(np.int16)
 
 
