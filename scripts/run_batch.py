@@ -161,6 +161,7 @@ def main():
         print(f"  {r['scenario']:30s} {status:12s} {duration:4d}s  ${cost:.3f}")
 
     # Save results
+    Path("transcripts").mkdir(exist_ok=True)
     results_path = "transcripts/batch-results.json"
     with open(results_path, "w") as f:
         json.dump(results, f, indent=2)

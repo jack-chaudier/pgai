@@ -115,8 +115,6 @@ class TwilioNovaBridge:
                 log.info("[%s] %s", role, text[:120])
                 self._check_goodbye(text)
 
-            elif event.type == "turn_end":
-                pass
 
     async def _max_duration_timer(self):
         await asyncio.sleep(MAX_CALL_DURATION)

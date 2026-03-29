@@ -36,7 +36,8 @@ PROMPT_TEMPLATE = (
     "YOUR GOAL:\n{goal}"
 )
 
-# Scenario storage for the current call (set by make_call, read by websocket handler)
+# Scenario for the next call. Only supports one concurrent call — set-scenario
+# races if two calls start simultaneously.
 _current_scenario: dict | None = None
 
 

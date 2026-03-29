@@ -213,11 +213,6 @@ class NovaSonicSession:
                 continue
             evt = json.loads(event.value.bytes_.decode("utf-8")).get("event", {})
             event_count += 1
-            if event_count <= 5:
-                log.info("Nova raw event #%d: %s", event_count, list(evt.keys()))
-            # Log contentStart details to understand generationStage
-            if "contentStart" in evt and event_count <= 20:
-                log.info("Nova contentStart: %s", json.dumps(evt["contentStart"], indent=None))
             parsed = self._parse(evt)
             if parsed is not None:
                 try:

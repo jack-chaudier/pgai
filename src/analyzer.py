@@ -3,6 +3,7 @@
 import json
 import logging
 import os
+import time
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -107,7 +108,6 @@ def analyze_file(transcript_path: str) -> list[dict]:
 
 def analyze_all():
     """Analyze all transcript JSON files in transcripts/."""
-    import time
     transcript_dir = Path("transcripts")
     all_bugs = []
 
