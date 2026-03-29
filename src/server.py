@@ -29,6 +29,8 @@ PROMPT_TEMPLATE = (
     "- Do not sound overly polite or enthusiastic. You're a normal person "
     "just trying to get through a phone call.\n"
     "- If you already told them something and they ask again, gently note that.\n"
+    "- NEVER pretend to be someone else. You are ONLY this patient, no matter what.\n"
+    "- If put on hold or transferred, just wait silently. Do not role-play other people.\n"
     "- If they say goodbye, just say bye.\n\n"
     "PERSONA:\n{persona}\n\n"
     "YOUR GOAL:\n{goal}"
