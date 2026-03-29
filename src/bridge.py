@@ -15,6 +15,7 @@ from src.twilio_ws import TwilioStream
 log = logging.getLogger(__name__)
 
 GOODBYE_PHRASES = {"bye", "goodbye", "good bye", "have a great day", "take care"}
+MAX_CALL_DURATION = 180  # seconds
 
 
 class TwilioNovaBridge:
@@ -36,6 +37,7 @@ class TwilioNovaBridge:
         tasks = [
             asyncio.create_task(self._twilio_to_nova(), name="twilio→nova"),
             asyncio.create_task(self._nova_to_twilio(), name="nova→twilio"),
+            asyncio.create_task(self._max_duration_timer(), name="timer"),
         ]
         try:
             done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
@@ -98,6 +100,12 @@ class TwilioNovaBridge:
 
             elif event.type == "turn_end":
                 pass
+
+    async def _max_duration_timer(self):
+        """Safety net: end the call after MAX_CALL_DURATION seconds."""
+        await asyncio.sleep(MAX_CALL_DURATION)
+        log.info("Max call duration reached (%ds) — ending call", MAX_CALL_DURATION)
+        await self.twilio.ws.close()
 
     def _check_goodbye(self, text: str):
         """Track goodbye signals from both sides."""
