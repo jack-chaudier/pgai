@@ -2,7 +2,7 @@
 
 Automated voice bot that calls Pretty Good AI's test line (+1-805-439-8008), role-plays as a patient using Amazon Nova Sonic for speech-to-speech AI, records transcripts, and uses Gemini to identify bugs in the agent's responses.
 
-**Loom walkthrough:** <!-- TODO: add Loom link here before submitting -->
+**[Loom walkthrough](https://www.loom.com/share/a90aece04a4b4eaa8a6c4e8034c57ef6)** -- architecture, demo, and bug findings (5 min)
 
 ## LLM / API Stack
 
