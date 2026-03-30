@@ -38,7 +38,7 @@ class TwilioNovaBridge:
 
     async def run(self) -> list[dict]:
         """Bridge audio between Twilio and Nova Sonic until the call ends."""
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         await loop.run_in_executor(None, self.nova.start)
         self._call_start = time.monotonic()
         log.info("Nova Sonic connected, bridging audio")
@@ -80,7 +80,7 @@ class TwilioNovaBridge:
 
     async def _nova_to_twilio(self):
         """Forward Nova Sonic audio to Twilio, collect transcript."""
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         while True:
             event = await loop.run_in_executor(None, lambda: self.nova.get_event(timeout=0.05))
             if event is SENTINEL:
@@ -135,7 +135,8 @@ class TwilioNovaBridge:
             return
 
         call_duration = time.monotonic() - self._call_start if self._call_start else 0
-        ts = datetime.now().strftime("%Y%m%d-%H%M%S")
+        now = datetime.now()
+        ts = now.strftime("%Y%m%d-%H%M%S")
         prefix = f"transcripts/{self.scenario_id}-{ts}"
         os.makedirs("transcripts", exist_ok=True)
 
@@ -143,7 +144,7 @@ class TwilioNovaBridge:
         output = {
             "scenario_id": self.scenario_id,
             "scenario_name": self.scenario_name,
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": now.isoformat(),
             "duration_seconds": round(call_duration, 1),
             "transcript": self.transcript,
         }
@@ -157,7 +158,7 @@ class TwilioNovaBridge:
         with open(txt_path, "w") as f:
             f.write(f"Scenario: {self.scenario_name}\n")
             f.write(f"Duration: {call_duration:.0f}s\n")
-            f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
+            f.write(f"Date: {now.strftime('%Y-%m-%d %H:%M')}\n")
             f.write("=" * 60 + "\n\n")
             for entry in self.transcript:
                 label = "Agent" if entry["role"] == "AGENT" else "Patient"

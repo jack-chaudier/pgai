@@ -28,6 +28,7 @@ env/
 .DS_Store
 
 # Testing/runtime artifacts
+.pytest_cache/
 *.log
 *.mp3
 *.ogg

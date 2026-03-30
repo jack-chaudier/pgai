@@ -18,7 +18,6 @@ import httpx
 from dotenv import load_dotenv
 from twilio.rest import Client
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 load_dotenv()
 
 TARGET = os.environ.get("TARGET_PHONE_NUMBER", "+18054398008")
@@ -117,7 +116,7 @@ def main():
         try:
             call_sid = make_call(ngrok_url, scenario, twilio_client, from_number)
             print(f"  Call SID: {call_sid}")
-            print(f"  Waiting for call to complete...", end="", flush=True)
+            print("  Waiting for call to complete...", end="", flush=True)
 
             call_info = wait_for_call(twilio_client, call_sid)
             duration = call_info["duration"]

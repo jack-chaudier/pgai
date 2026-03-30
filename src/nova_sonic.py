@@ -43,8 +43,8 @@ class _StaticCreds:
 def _make_client(region: str = "us-east-1") -> BedrockRuntimeClient:
     """Create the Bedrock client. Must be called before uvicorn starts
     (awscrt's HTTP/2 client breaks if initialized inside a running server)."""
-    ak = os.environ.get("AWS_ACCESS_KEY_ID") or os.environ.get("AWS_ACCESS_KEY", "")
-    sk = os.environ.get("AWS_SECRET_ACCESS_KEY") or os.environ.get("AWS_SECRET_KEY", "")
+    ak = os.environ.get("AWS_ACCESS_KEY_ID", "")
+    sk = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
     token = os.environ.get("AWS_SESSION_TOKEN")
     return BedrockRuntimeClient(config=Config(
         aws_credentials_identity_resolver=_StaticCreds(ak, sk, token),
@@ -192,7 +192,7 @@ class NovaSonicSession:
 
     async def _send_loop(self, stream) -> None:
         """Read audio from inbound queue and send to Nova."""
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         while True:
             pcm_b64 = await loop.run_in_executor(None, self._inbound.get)
             if pcm_b64 is SENTINEL:

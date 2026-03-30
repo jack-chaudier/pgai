@@ -5,6 +5,7 @@ twilio>=9.0.0
 fastapi>=0.115.0
 uvicorn[standard]>=0.32.0
 websockets>=13.0
+httpx>=0.27.0
 
 # AWS Bedrock — Nova Sonic bidirectional speech-to-speech
 aws-sdk-bedrock-runtime>=0.4.0
@@ -14,6 +15,9 @@ google-genai>=1.69.0
 
 # Environment
 python-dotenv>=1.0.0
+
+# Testing
+pytest>=8.0.0
 
 # Audio utilities
 numpy>=1.26.0

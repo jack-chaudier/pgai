@@ -11,16 +11,19 @@ _MULAW_BIAS = 0x84  # 132
 _MULAW_CLIP = 32635
 
 # Precomputed decode table: mu-law byte -> int16 PCM sample
-_DECODE_TABLE = np.zeros(256, dtype=np.int16)
+def _build_decode_table() -> np.ndarray:
+    table = np.zeros(256, dtype=np.int16)
+    for i in range(256):
+        val = ~i & 0xFF
+        sign = val & 0x80
+        exp = (val >> 4) & 0x07
+        man = val & 0x0F
+        sample = ((man << 3) + _MULAW_BIAS) << exp
+        sample -= _MULAW_BIAS
+        table[i] = np.int16(-sample if sign else sample)
+    return table
 
-for _i in range(256):
-    _val = ~_i & 0xFF
-    _sign = _val & 0x80
-    _exp = (_val >> 4) & 0x07
-    _man = _val & 0x0F
-    _sample = ((_man << 3) + _MULAW_BIAS) << _exp
-    _sample -= _MULAW_BIAS
-    _DECODE_TABLE[_i] = np.int16(-_sample if _sign else _sample)
+_DECODE_TABLE = _build_decode_table()
 
 
 def mulaw_decode(mulaw_bytes: bytes) -> np.ndarray:

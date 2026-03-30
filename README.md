@@ -85,19 +85,6 @@ Sends all transcripts to Gemini for automated bug detection. Results are saved a
 python -m pytest tests/
 ```
 
-## Batch Run Results
-
-16 scenarios attempted, 15 completed (1 failed due to connection drop).
-
-| Metric | Value |
-|---|---|
-| Total cost | $11.23 |
-| Call durations | 59s to 303s |
-| Raw bugs found | 72 |
-| Distinct issues (consolidated) | ~12 |
-
-Full results in `transcripts/batch-results.json`. Per-call analysis in each `*.analysis.json` file. Consolidated bugs in `transcripts/all-bugs.json`. Human-written bug report in `BUG_REPORT.md`.
-
 ## Project Structure
 
 ```

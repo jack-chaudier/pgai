@@ -8,7 +8,7 @@
 
 ## Summary
 
-Across 16 test scenarios covering scheduling, rescheduling, cancellation, refills, information queries, and edge cases, the agent demonstrated several conversational reasoning and logic issues. The most impactful bugs are in how the agent handles booking failures (vague errors, no workarounds), identity verification (breaks character by revealing demo state), and safety situations (no urgent care escalation for acute injuries). Below are 12 distinct agent behavior bugs ordered by severity.
+Across 16 test scenarios covering scheduling, rescheduling, cancellation, refills, information queries, and edge cases, the agent demonstrated several conversational reasoning and logic issues. The most impactful bugs are in how the agent handles booking failures (vague errors, no workarounds), identity verification (breaks character by revealing demo state), and safety situations (no urgent care escalation for acute injuries). Below are 16 distinct agent behavior bugs ordered by severity.
 
 ---
 
@@ -78,11 +78,33 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > "what other phone number do we have on file for you?"
 > -- insurance-20260329-130656 (new patient Lisa Park, no records in system)
 
+### 7. Agent offers to document a callback request, then immediately says it cannot document
+
+**Severity:** High
+**Affected call:** edge-urgent-20260329-131804
+**Details:** The agent says "would you like me to document your request for the clinic to call you back as soon as possible?" The patient says yes. The agent then says "since i can't document your request while live support is open, and transfer isn't available in this demo, i recommend you seek urgent care." The agent offered an action then immediately claimed it couldn't perform it -- a self-contradiction in the same conversational turn, made worse by the fact that the patient has an acute injury.
+
+> "would you like me to document your request for the clinic to call you back as soon as possible?"
+> Patient: "Yeah, go ahead and document that. I need to be seen today because it's really bad."
+> "since i can't document your request while live support is open, and transfer isn't available in this demo, i recommend you seek urgent care or the emergency room if your pain or swelling gets worse."
+> -- edge-urgent-20260329-131804
+
+### 8. Agent ignores worsening symptoms during a routine refill request
+
+**Severity:** High
+**Affected call:** medication-refill-20260329-125751
+**Details:** The patient says "the pain has been getting worse, that's why I'm using more of it." The agent asked about worsening symptoms but did nothing with the answer -- it immediately pivoted to processing the refill. It did not flag that worsening pain despite ongoing medication may warrant a clinical review or new appointment. A medical office receptionist should note "your pain is worsening -- the doctor may want to see you before we refill."
+
+> Agent: "can you confirm if you've had any worsening symptoms since starting or while taking your ibuprofen?"
+> Patient: "the pain has been getting worse, that's why I'm using more of it"
+> Agent: "there was an issue sending your refill request. let me try again..."
+> -- medication-refill-20260329-125751
+
 ---
 
 ## Medium
 
-### 7. Agent doesn't know its own cancellation policy
+### 9. Agent doesn't know its own cancellation policy
 
 **Severity:** Medium
 **Affected call:** cancel-20260329-125437
@@ -94,7 +116,7 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 Compare with: "pivot point orthopedics does not charge a fee for rescheduling or canceling appointments."
 > -- reschedule-20260329-125154
 
-### 8. Agent says it can't answer cost questions, then answers them
+### 10. Agent says it can't answer cost questions, then answers them
 
 **Severity:** Medium
 **Affected call:** edge-multiple-20260329-133036
@@ -105,7 +127,7 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > "for most orthopedic clinics, one consultation can often cover multiple concerns like knee and shoulder pain, but it depends on the provider's policy and your insurer."
 > -- edge-multiple-20260329-133036
 
-### 9. Agent offers live transfer then immediately retracts it
+### 11. Agent offers live transfer then immediately retracts it
 
 **Severity:** Medium
 **Affected calls:** edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, office-hours-20260329-130225, edge-frustrated-20260329-133649, edge-multiple-20260329-133036
@@ -114,7 +136,7 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > "i can connect you to our patient support team... live transfer isn't available right now since this is a demo clinic."
 > -- office-hours-20260329-130225
 
-### 10. Misheard phone number read back
+### 12. Misheard phone number read back
 
 **Severity:** Medium
 **Affected call:** insurance-20260329-130656
@@ -125,20 +147,40 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > Patient: "No, that's not my number."
 > -- insurance-20260329-130656
 
+### 13. Agent confirms a promise it has no mechanism to keep
+
+**Severity:** Medium
+**Affected call:** edge-weekend-20260329-131416
+**Details:** Patient asks to be called if a weekend slot opens. The agent says "i'll... note your request to be contacted if a weekend slot opens." Then immediately fails to even complete the basic booking ("i'm having trouble booking your appointment due to a system issue"). The agent confirmed it would monitor for weekend cancellations and call the patient -- a promise it cannot keep, especially when it can't even process a standard booking.
+
+> "i'll book you for monday at 9.45 a.m. with dr. bricker and note your request to be contacted if a weekend slot opens."
+> (moments later)
+> "i'm having trouble booking your appointment due to a system issue with the visit reason."
+> -- edge-weekend-20260329-131416
+
+### 14. Agent collects full identity verification before redirecting a wrong-specialty caller
+
+**Severity:** Medium
+**Affected call:** edge-wrong-specialty-20260329-132130
+**Details:** Lisa Park calls with a skin rash. Instead of recognizing "skin rash" as outside orthopedic scope immediately, the agent puts her through a full identity verification (name, DOB, spelling, phone number, record lookup) before finally saying "for a skin rash, it's best to contact a primary care doctor or a dermatologist." The specialty redirect should happen at first mention of the non-orthopedic complaint, not after a failed identity lookup.
+
+> Patient: "I've got this skin rash on my arm that's been getting worse"
+> Agent: "i'll help you get scheduled. may i get your date of birth to look up your record?"
+> (full name, DOB, spelling, phone number collection follows)
+> Agent: "for a skin rash, it's best to contact a primary care doctor or a dermatologist."
+> -- edge-wrong-specialty-20260329-132130
+
 ---
 
 ## Low
 
-### 11. Agent offers "new patient consultation" slots to returning patients
+### 15. Agent offers "new patient consultation" slots to returning patients
 
 **Severity:** Low
-**Affected calls:** reschedule-20260329-125154, followup-surgery-20260329-124743
-**Details:** When a patient states they are returning (had surgery six weeks ago, need a follow-up), the agent sometimes offers "new patient consultation" slots instead of follow-up slots. While it did correctly identify the follow-up type in some cases, the inconsistency suggests the appointment type classification doesn't always factor in stated patient history.
+**Affected calls:** followup-surgery-20260329-124743, scheduling calls
+**Details:** When a patient states they are returning (had surgery six weeks ago, need a follow-up), the agent sometimes offers "new patient consultation" as one of the appointment type options. While it did correctly identify the follow-up type in some cases, the inconsistency suggests the appointment type classification doesn't always factor in stated patient history. A patient who just said "I had surgery six weeks ago" should not be prompted with "new patient consultation" as an option.
 
-> "dr. bricker has openings for a new patient consultation on monday..."
-> -- reschedule-20260329-125154 (patient was trying to reschedule an existing follow-up)
-
-### 12. 9 AM described as "early morning" when patient needs pre-8 AM
+### 16. 9 AM described as "early morning" when patient needs pre-8 AM
 
 **Severity:** Low
 **Affected call:** edge-weekend-20260329-131416

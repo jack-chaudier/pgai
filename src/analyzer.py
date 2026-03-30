@@ -12,6 +12,15 @@ from google import genai
 load_dotenv()
 log = logging.getLogger(__name__)
 
+_client: genai.Client | None = None
+
+def _get_client() -> genai.Client:
+    global _client
+    if _client is None:
+        api_key = os.environ.get("GOOGLE_API_KEY", "")
+        _client = genai.Client(api_key=api_key)
+    return _client
+
 MODEL = "gemini-3.1-flash-lite-preview"
 
 ANALYSIS_PROMPT = """\
@@ -56,8 +65,7 @@ TRANSCRIPT:
 
 def analyze_transcript(transcript: list[dict]) -> list[dict]:
     """Analyze a transcript and return a list of bugs found."""
-    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY", "")
-    client = genai.Client(api_key=api_key)
+    client = _get_client()
 
     # Format transcript as readable text
     text = "\n".join(f"[{e['role']}] {e['content']}" for e in transcript)

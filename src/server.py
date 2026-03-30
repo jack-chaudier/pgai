@@ -1,8 +1,6 @@
 """FastAPI server — Twilio webhook + WebSocket endpoint."""
 
-import json
 import logging
-import os
 
 from fastapi import FastAPI, WebSocket, Request
 from fastapi.responses import PlainTextResponse
@@ -95,10 +93,6 @@ async def twilio_websocket(websocket: WebSocket):
     )
 
     try:
-        transcript = await bridge.run()
-        if transcript:
-            log.info("Transcript [%s] (%d entries):", scenario_id, len(transcript))
-            for entry in transcript:
-                log.info("  [%s] %s", entry["role"], entry["content"][:100])
+        await bridge.run()
     except Exception as e:
         log.exception("Bridge error: %s", e)

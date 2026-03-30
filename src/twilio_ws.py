@@ -49,17 +49,3 @@ class TwilioStream:
             "media": {"payload": mulaw_b64},
         }))
 
-    async def send_clear(self) -> None:
-        """Clear Twilio's audio playback buffer (for barge-in)."""
-        await self.ws.send_text(json.dumps({
-            "event": "clear",
-            "streamSid": self.stream_sid,
-        }))
-
-    async def send_mark(self, name: str) -> None:
-        """Send a mark to track when audio playback completes."""
-        await self.ws.send_text(json.dumps({
-            "event": "mark",
-            "streamSid": self.stream_sid,
-            "mark": {"name": name},
-        }))
