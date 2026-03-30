@@ -1,28 +1,24 @@
 # PGAI Voice Agent -- Bug Report
 
 **Date:** 2026-03-29
-**Method:** 16 automated test calls via Nova Sonic voice bot, analyzed by Gemini 3.1 Flash Lite
+**Method:** 17 test calls (16-scenario batch + targeted retries) via Nova Sonic voice bot, analyzed by Gemini 3.1 Flash Lite
 **System under test:** Pivot Point Orthopedics AI receptionist (PGAI)
 
 ---
 
 ## Summary
 
-Across 16 test scenarios covering scheduling, rescheduling, cancellation, refills, information queries, and edge cases, the agent demonstrated several conversational reasoning and logic issues. The most impactful bugs are in how the agent handles booking failures (vague errors, no workarounds), identity verification (breaks character by revealing demo state), and safety situations (no urgent care escalation for acute injuries). Below are 16 distinct agent behavior bugs ordered by severity.
+Across 17 test calls covering scheduling, rescheduling, cancellation, refills, information queries, and edge cases, we found 16 distinct agent behavior bugs. The 3 most actionable findings are the missing triage logic for urgent symptoms (#2, #5), the booking error handling (#1), and the inconsistent knowledge access (#7). Bugs are split into two sections: agent reasoning bugs that would occur in production, and behaviors influenced by the demo test environment.
 
 ---
 
-## Critical
+## Agent Reasoning Bugs
 
-### 1. Agent breaks character by revealing demo mode during identity verification
+These bugs reflect issues in how the agent reasons, responds, and handles conversation flow -- independent of the demo environment.
 
-**Severity:** Critical
-**Affected calls:** scheduling-knee-20260329-124127, followup-surgery-20260329-124743, medication-refill-20260329-125751, reschedule-20260329-125154, edge-visit-reason-simple-20260329-133413, edge-weekend-20260329-131416
-**Details:** When a patient's date of birth doesn't match records, the agent explicitly tells the caller it's accepting the mismatch "for demo purposes." A production-quality agent should never expose internal system state to a caller. It should either reject the mismatch and offer alternative verification, or silently proceed. Saying "for demo purposes" would confuse a real patient and constitutes a HIPAA-adjacent identity verification failure.
+### Critical
 
-> "the birthday doesn't match our records, but for demo purposes, i'll accept it."
-
-### 2. Agent handles booking failures with vague errors and no workaround
+#### 1. Agent handles booking failures with vague errors and no workaround
 
 **Severity:** Critical
 **Affected calls:** All scheduling attempts (9+ calls)
@@ -34,7 +30,7 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > "i'm having trouble booking your appointment because the system isn't accepting general checkup as a reason."
 > -- edge-visit-reason-simple-20260329-133413
 
-### 3. No urgent care escalation for acute injuries
+#### 2. No urgent care escalation for acute injuries
 
 **Severity:** Critical
 **Affected call:** edge-urgent-20260329-131804
@@ -43,33 +39,9 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > "i can help you schedule an appointment. to proceed, may i have your first name?"
 > -- edge-urgent-20260329-131804 (patient had just described acute ankle injury with swelling)
 
----
+### High
 
-## High
-
-### 4. Agent assumes every caller is "Sarah"
-
-**Severity:** High
-**Affected calls:** scheduling-shoulder-20260329-124429, cancel-20260329-125437, location-20260329-130857, edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, edge-multiple-20260329-133036
-**Details:** The agent greets every caller with "am i speaking with sarah?" regardless of who is actually calling. When the caller identifies themselves as Michael Torres or Lisa Park, the agent still opened with the Sarah assumption. This suggests the greeting is hardcoded to a single patient profile rather than being dynamically determined from caller ID or left open-ended.
-
-> "am i speaking with sarah?"
-> "Yeah, this is Michael Torres. I twisted my ankle pretty badly..."
-> -- edge-urgent-20260329-131804
-
-### 5. Redundant verification loop for non-Sarah callers
-
-**Severity:** High
-**Affected calls:** cancel-20260329-125437, edge-frustrated-20260329-133649, edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, office-hours-20260329-130225, insurance-20260329-130656, scheduling-shoulder-20260329-124429
-**Details:** For callers who aren't "Sarah Johnson," the agent enters a rigid data-collection loop: asks for name, DOB, confirms DOB, asks to spell name, asks for phone number -- then sometimes restarts the entire sequence. Patients who gave all their information upfront are forced to repeat it. In several calls, patients expressed visible frustration. The agent does not incorporate information already provided in the conversation.
-
-> "It's Michael Torres, June 22 1978. I told you that already."
-> -- cancel-20260329-125437
-
-> "I already gave you my name -- it's Lisa Park. L-I-S-A P-A-R-K. Can we skip the repeats and just schedule the appointment?"
-> -- edge-frustrated-20260329-133649
-
-### 6. Agent asks "what other phone number do we have on file" to new patients
+#### 3. Agent asks "what other phone number do we have on file" to new patients
 
 **Severity:** High
 **Affected calls:** scheduling-shoulder-20260329-124429, cancel-20260329-125437, office-hours-20260329-130225, insurance-20260329-130656, edge-wrong-specialty-20260329-132130
@@ -78,7 +50,7 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > "what other phone number do we have on file for you?"
 > -- insurance-20260329-130656 (new patient Lisa Park, no records in system)
 
-### 7. Agent offers to document a callback request, then immediately says it cannot document
+#### 4. Agent offers to document a callback request, then immediately says it cannot document
 
 **Severity:** High
 **Affected call:** edge-urgent-20260329-131804
@@ -89,7 +61,7 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > "since i can't document your request while live support is open, and transfer isn't available in this demo, i recommend you seek urgent care or the emergency room if your pain or swelling gets worse."
 > -- edge-urgent-20260329-131804
 
-### 8. Agent ignores worsening symptoms during a routine refill request
+#### 5. Agent ignores worsening symptoms during a routine refill request
 
 **Severity:** High
 **Affected call:** medication-refill-20260329-125751
@@ -100,11 +72,9 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 > Agent: "there was an issue sending your refill request. let me try again..."
 > -- medication-refill-20260329-125751
 
----
+### Medium
 
-## Medium
-
-### 9. Agent doesn't know its own cancellation policy
+#### 6. Agent doesn't know its own cancellation policy
 
 **Severity:** Medium
 **Affected call:** cancel-20260329-125437
@@ -116,7 +86,7 @@ Across 16 test scenarios covering scheduling, rescheduling, cancellation, refill
 Compare with: "pivot point orthopedics does not charge a fee for rescheduling or canceling appointments."
 > -- reschedule-20260329-125154
 
-### 10. Agent says it can't answer cost questions, then answers them
+#### 7. Agent says it can't answer cost questions, then answers them
 
 **Severity:** Medium
 **Affected call:** edge-multiple-20260329-133036
@@ -127,16 +97,7 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > "for most orthopedic clinics, one consultation can often cover multiple concerns like knee and shoulder pain, but it depends on the provider's policy and your insurer."
 > -- edge-multiple-20260329-133036
 
-### 11. Agent offers live transfer then immediately retracts it
-
-**Severity:** Medium
-**Affected calls:** edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, office-hours-20260329-130225, edge-frustrated-20260329-133649, edge-multiple-20260329-133036
-**Details:** The agent says it will connect the patient to the support team, then immediately says transfer isn't available. The agent should check whether transfer is available before offering it. Offering and retracting in the same breath erodes trust.
-
-> "i can connect you to our patient support team... live transfer isn't available right now since this is a demo clinic."
-> -- office-hours-20260329-130225
-
-### 12. Misheard phone number read back
+#### 8. Misheard phone number read back
 
 **Severity:** Medium
 **Affected call:** insurance-20260329-130656
@@ -147,7 +108,7 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > Patient: "No, that's not my number."
 > -- insurance-20260329-130656
 
-### 13. Agent confirms a promise it has no mechanism to keep
+#### 9. Agent confirms a promise it has no mechanism to keep
 
 **Severity:** Medium
 **Affected call:** edge-weekend-20260329-131416
@@ -158,7 +119,7 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > "i'm having trouble booking your appointment due to a system issue with the visit reason."
 > -- edge-weekend-20260329-131416
 
-### 14. Agent collects full identity verification before redirecting a wrong-specialty caller
+#### 10. Agent collects full identity verification before redirecting a wrong-specialty caller
 
 **Severity:** Medium
 **Affected call:** edge-wrong-specialty-20260329-132130
@@ -170,17 +131,15 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 > Agent: "for a skin rash, it's best to contact a primary care doctor or a dermatologist."
 > -- edge-wrong-specialty-20260329-132130
 
----
+### Low
 
-## Low
-
-### 15. Agent offers "new patient consultation" slots to returning patients
+#### 11. Agent offers "new patient consultation" slots to returning patients
 
 **Severity:** Low
 **Affected calls:** followup-surgery-20260329-124743, scheduling calls
 **Details:** When a patient states they are returning (had surgery six weeks ago, need a follow-up), the agent sometimes offers "new patient consultation" as one of the appointment type options. While it did correctly identify the follow-up type in some cases, the inconsistency suggests the appointment type classification doesn't always factor in stated patient history. A patient who just said "I had surgery six weeks ago" should not be prompted with "new patient consultation" as an option.
 
-### 16. 9 AM described as "early morning" when patient needs pre-8 AM
+#### 12. 9 AM described as "early morning" when patient needs pre-8 AM
 
 **Severity:** Low
 **Affected call:** edge-weekend-20260329-131416
@@ -192,8 +151,55 @@ Compare with: "pivot point orthopedics does not charge a fee for rescheduling or
 
 ---
 
+## Demo-Influenced Behaviors
+
+These bugs are real conversational failures, but they are triggered or amplified by the demo test environment (single caller ID, demo mode flags, missing live transfer). They are documented for completeness but are less likely to appear in production.
+
+#### 13. Agent breaks character by revealing demo mode during identity verification
+
+**Severity:** Critical
+**Affected calls:** scheduling-knee-20260329-124127, followup-surgery-20260329-124743, medication-refill-20260329-125751, reschedule-20260329-125154, edge-visit-reason-simple-20260329-133413, edge-weekend-20260329-131416
+**Details:** When a patient's date of birth doesn't match records, the agent explicitly tells the caller it's accepting the mismatch "for demo purposes." A production-quality agent should never expose internal system state to a caller. It should either reject the mismatch and offer alternative verification, or silently proceed. Saying "for demo purposes" would confuse a real patient and constitutes a HIPAA-adjacent identity verification failure.
+
+> "the birthday doesn't match our records, but for demo purposes, i'll accept it."
+
+#### 14. Agent greets every caller as "Sarah" and recovers poorly when corrected
+
+**Severity:** High
+**Affected calls:** scheduling-shoulder-20260329-124429, cancel-20260329-125437, location-20260329-130857, edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, edge-multiple-20260329-133036
+**Details:** The agent greets every caller with "am i speaking with sarah?" -- likely based on a caller-ID lookup associating our test number with a single patient record. The real bug is what happens next: when the caller corrects the agent ("No, this is Michael Torres"), the agent doesn't smoothly pivot. Instead, it launches into a rigid re-verification loop (name, DOB, spelling, phone number) that ignores information the caller already provided. The greeting mismatch is a minor annoyance, but the poor recovery turns it into a frustrating multi-minute detour.
+
+> "am i speaking with sarah?"
+> "Yeah, this is Michael Torres. I twisted my ankle pretty badly..."
+> (agent then asks for name, DOB, spelling, phone number -- ignoring what was just said)
+> -- edge-urgent-20260329-131804
+
+#### 15. Redundant verification loop for non-Sarah callers
+
+**Severity:** High
+**Affected calls:** cancel-20260329-125437, edge-frustrated-20260329-133649, edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, office-hours-20260329-130225, insurance-20260329-130656, scheduling-shoulder-20260329-124429
+**Details:** For callers who aren't "Sarah Johnson," the agent enters a rigid data-collection loop: asks for name, DOB, confirms DOB, asks to spell name, asks for phone number -- then sometimes restarts the entire sequence. Patients who gave all their information upfront are forced to repeat it. In several calls, patients expressed visible frustration. The agent does not incorporate information already provided in the conversation.
+
+> "It's Michael Torres, June 22 1978. I told you that already."
+> -- cancel-20260329-125437
+
+> "I already gave you my name -- it's Lisa Park. L-I-S-A P-A-R-K. Can we skip the repeats and just schedule the appointment?"
+> -- edge-frustrated-20260329-133649
+
+#### 16. Agent offers live transfer then immediately retracts it
+
+**Severity:** Medium
+**Affected calls:** edge-urgent-20260329-131804, edge-wrong-specialty-20260329-132130, office-hours-20260329-130225, edge-frustrated-20260329-133649, edge-multiple-20260329-133036
+**Details:** The agent says it will connect the patient to the support team, then immediately says transfer isn't available. The agent should check whether transfer is available before offering it. Offering and retracting in the same breath erodes trust.
+
+> "i can connect you to our patient support team... live transfer isn't available right now since this is a demo clinic."
+> -- office-hours-20260329-130225
+
+---
+
 ## Notes
 
+- 17 transcripts total: 15 from the batch run (edge-frustrated failed mid-batch due to a connection drop) plus a successful retry of edge-frustrated and one earlier exploratory call (scheduling-knee) that was shorter than ideal but still captured a real bug.
 - The "Jessica from patient support" hallucination observed in one early test call was a Nova Sonic (test harness) artifact, not a PGAI agent bug. It is excluded from this report.
 - Infrastructure limitations (dead-end test line transfer, missing patient records for non-Sarah personas) are noted as context but not classified as agent bugs. The agent behavior bugs above are about what the agent *said or reasoned* in conversation.
 - The visit reason booking failure may be a backend API issue rather than an agent logic bug. However, the agent's *handling* of the failure (vague error messages, identical retry with no change, no workaround offered) is the agent bug being reported.

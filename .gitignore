@@ -43,3 +43,6 @@ uv.lock
 
 # ngrok
 ngrok.yml
+
+# Local docs/diagrams (not part of submission)
+docs/
